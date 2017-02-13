@@ -1,3 +1,8 @@
 node_modules
 .DS_Store
 docs/_book
+.idea/misc.xml
+.idea/modules.xml
+.idea/molgenis-vue-template.iml
+.idea/vcs.xml
+.idea/workspace.xml
