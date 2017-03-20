@@ -25,8 +25,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: './coverage',
       reporters: [
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+        { type: 'cobertura', subdir: 'cobertura' }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
       ]
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
