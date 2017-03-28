@@ -12,7 +12,7 @@ module.exports = function (config) {
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
     browsers: ['PhantomJS'],
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
@@ -25,8 +25,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: './coverage',
       reporters: [
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+        { type: 'cobertura', subdir: 'cobertura' }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
       ]
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
