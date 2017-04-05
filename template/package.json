@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "bootstrap-vue": "^0.11.1",
-    "vue": "^2.2.6"{{#vuex}},
+    "vue": "^2.2.6"{{#vuex}}{{#router}},
+    "vuex-router-sync": "4.1.2"{{/router}}{{/vuex}}{{#vuex}},
     "vuex": "^2.2.1"{{/vuex}}{{#router}},
     "vue-router": "^2.3.1"{{/router}}
   },
