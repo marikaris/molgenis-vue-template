@@ -9,9 +9,11 @@ export const SET_MESSAGE = '__SET_MESSAGE__'
 
 Vue.use(Vuex)
 
+const message = window.__INITIAL_STATE__
+
 export default new Vuex.Store({
   state: {
-    message: ''
+    message: message
   },
   mutations: {
     [SET_MESSAGE] (state, message) {

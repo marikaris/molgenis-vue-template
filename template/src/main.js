@@ -14,6 +14,13 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
-  template: '<App/>',
+  {{#vuex}}
+  template: '<App />',
+  {{else}}
+  data: {
+    message: window.__INITIAL_STATE__
+  },
+  template: '<App :message="message"></App>',
+  {{/vuex}}
   components: { App }
 })

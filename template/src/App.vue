@@ -5,6 +5,10 @@
     {{else}}
     <hello></hello>
     {{/router}}
+
+    {{#unless vuex}}
+    \{{message}}
+    {{/unless}}
   </div>
 </template>
 
@@ -14,6 +18,9 @@ import Hello from './components/Hello'
 
 {{/unless}}
 export default {
+  {{#unless vuex}}
+  props: ['message'],
+  {{/unless}}
   name: 'app'{{#router}}{{else}},
   components: {
     Hello
