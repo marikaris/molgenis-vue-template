@@ -7,3 +7,5 @@ docs/_book
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/inspectionProfiles/Project_Default.xml
+test/**/**
+test/.**
