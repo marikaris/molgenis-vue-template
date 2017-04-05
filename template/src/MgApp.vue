@@ -5,7 +5,7 @@
     {{#router}}
       <router-view></router-view>
     {{else}}
-      <hello></hello>
+      <molgenis-hello></molgenis-hello>
     {{/router}}
 
     {{#unless vuex}}
@@ -17,16 +17,16 @@
 
 <script>
 {{#unless router}}
-import Hello from './components/Hello'
+import Hello from './components/MgHello'
 
 {{/unless}}
 export default {
   {{#unless vuex}}
   props: ['message'],
   {{/unless}}
-  name: 'app'{{#router}}{{else}},
+  name: 'molgenis-app'{{#router}}{{else}},
   components: {
-    Hello
+    MgHello
   }{{/router}}
 }
 </script>
