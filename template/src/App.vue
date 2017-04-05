@@ -1,14 +1,17 @@
 <template>
-  <div id="app">
+  <div class="container">
+    <div id="app">
+      <b-alert show dismissible>A vue bootstrap alert component</b-alert>
     {{#router}}
-    <router-view></router-view>
+      <router-view></router-view>
     {{else}}
-    <hello></hello>
+      <hello></hello>
     {{/router}}
 
     {{#unless vuex}}
     \{{message}}
     {{/unless}}
+    </div>
   </div>
 </template>
 
@@ -35,6 +38,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
