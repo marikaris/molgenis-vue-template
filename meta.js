@@ -31,11 +31,17 @@ module.exports = {
     "router": {
       "type": "confirm",
       "message": "Install vue-router?"
+    },
+    "flow" : {
+      "type": "confirm",
+      "message": "Do you want to add typing to your project with Flow?"
     }
   },
   "filters": {
     "src/store/**/*": "vuex",
-    "src/router/**/*": "router"
+    "src/router/**/*": "router",
+    ".flowconfig": "flow",
+    "flow.examples.js": "flow"
   },
   "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };

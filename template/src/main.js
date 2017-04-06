@@ -5,6 +5,7 @@ import App from './App'
 {{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'{{/router}}{{/vuex}}
 {{#vuex}}import store from './store'{{/vuex}}
 {{#router}}import router from './router'{{/router}}
+{{#flow}}import { setState } from './flow.examples'{{/flow}}
 
 // You can use both the components found @https://bootstrap-vue.github.io/
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
@@ -17,6 +18,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 sync(store, router)
 {{/router}}{{/vuex}}
 Vue.use(BootstrapVue)
+
+{{#flow}}setState('token', false, 'not a number'){{/flow}}
 
 /* eslint-disable no-new */
 new Vue({
