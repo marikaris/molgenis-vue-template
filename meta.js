@@ -34,6 +34,7 @@ module.exports = {
     },
     "flow" : {
       "type": "confirm",
+      "when": "vuex",
       "message": "Do you want to add typing to your project with Flow?"
     }
   },

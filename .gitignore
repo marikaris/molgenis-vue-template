@@ -9,3 +9,4 @@ docs/_book
 .idea/inspectionProfiles/Project_Default.xml
 test/**/**
 test/.**
+npm-debug.log
