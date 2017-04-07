@@ -2,15 +2,6 @@
   <div class="hello">
     <h1>This is the MOLGENIS Hello Component</h1>
     <p>message: \{{ message }}</p>
-    <h2 v-i18n="L10N_MESSAGES"></h2>
-    <dl>
-      <dt>Using $t function</dt>
-        <dd>\{{$t('MESSAGE1')}}</dd>
-      <dt>Using directive</dt>
-        <dd v-i18n="MESSAGE2"></dd>
-      <dt>Using filter</dt>
-        <dd>\{{'MESSAGE3' | i18n}}</dd>
-    </dl>
   </div>
 </template>
 
