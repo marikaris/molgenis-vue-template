@@ -1,4 +1,4 @@
-// @formatter:off
+{{! @formatter:off }}
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
 import Vue from 'vue'
 import MgApp from './MgApp'
