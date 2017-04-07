@@ -1,7 +1,7 @@
 {{! @formatter:off }}
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
 import Vue from 'vue'
-import i18n from '@molgenis/molgenis-i18n-js'
+import i18n from '@molgenis/molgenis-i18n-js/dist/molgenis-i18n-js.min'
 import MgApp from './MgApp'
 {{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'
 {{/router}}import store from './store'{{/vuex}}{{#router}}
