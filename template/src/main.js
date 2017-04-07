@@ -1,6 +1,8 @@
+// @formatter:off
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
 import Vue from 'vue'
 import MgApp from './MgApp'
+import i18n from './i18n'
 
 {{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'{{/router}}{{/vuex}}
 {{#vuex}}import store from './store'{{/vuex}}
@@ -18,22 +20,28 @@ sync(store, router)
 {{/router}}{{/vuex}}
 Vue.use(BootstrapVue)
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  {{#vuex}}
-  store,
-  {{/vuex}}
-  {{#router}}
-  router,
-  {{/router}}
-  {{#vuex}}
-  template: '<MgApp />',
-  {{else}}
-  data: {
-    message: window.__INITIAL_STATE__
-  },
-  template: '<MgApp :message="message"></MgApp>',
-  {{/vuex}}
-  components: { MgApp }
+Vue.use(i18n, {
+  lng: window.lng,
+  fallbackLng: window.fallbackLng,
+  callback () {
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      {{#vuex}}
+      store,
+      {{/vuex}}
+      {{#router}}
+      router,
+      {{/router}}
+      {{#vuex}}
+      template: '<MgApp />',
+      {{else}}
+      data: {
+        message: window.__INITIAL_STATE__
+      },
+      template: '<MgApp :message="message"></MgApp>',
+      {{/vuex}}
+      components: { MgApp }
+    })
+  }
 })
