@@ -1,27 +1,25 @@
 <template>
   <div>
-    <h2 v-i18n="L10N"></h2>
+    <h2>\{{ 'L10N' | i18n }}</h2>
     <dl>
       <dt>date using moment</dt>
       <dd>\{{ date | moment('LLLL') }}</dd>
       <dt>Using $t function</dt>
       <dd>\{{ $t('MESSAGE1') }}</dd>
-      <dt>Using directive</dt>
-      <dd v-i18n="MESSAGE2"></dd>
       <dt>Using filter</dt>
-      <dd>\{{ 'MESSAGE3'|i18n }}</dd>
+      <dd>\{{ 'MESSAGE2' | i18n }}</dd>
     </dl>
   </div>
 </template>
 
 <script>
+{{#vuex}}import { mapState } from 'vuex'{{/vuex}}
 export default {
-  name: 'molgenis-i18n',
-  data () {
-    return {
-      message: this.$store.state.message
-    }
-  }
+  name: 'molgenis-i18n',{{#vuex}}
+  computed: mapState(['date']){{else}}
+  data: {
+    date: new Date()
+  }{{/vuex}}
 }
 </script>
 
