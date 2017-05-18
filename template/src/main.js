@@ -1,7 +1,7 @@
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
 import 'babel-polyfill'
 import Vue from 'vue'
-import MgApp from './MgApp'
+import App from './App'
 
 {{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'{{/router}}{{/vuex}}
 {{#vuex}}import store from './store'{{/vuex}}
@@ -29,12 +29,12 @@ new Vue({
   router,
   {{/router}}
   {{#vuex}}
-  template: '<MgApp />',
+  template: '<App />',
   {{else}}
   data: {
-    message: window.__INITIAL_STATE__
+    message: window.__INITIAL_STATE__.message
   },
-  template: '<MgApp :message="message"></MgApp>',
+  template: '<App :message="message"></App>',
   {{/vuex}}
-  components: { MgApp }
+  components: { App }
 })
