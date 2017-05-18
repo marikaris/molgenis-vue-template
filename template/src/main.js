@@ -1,13 +1,14 @@
+{{! @formatter:off }}
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
 import 'babel-polyfill'
 import Vue from 'vue'
+
 import App from './App'
+{{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'
+{{/router}}import store from './store'{{/vuex}}{{#router}}
+import router from './router'
+{{/router}}// You can use both the components found @https://bootstrap-vue.github.io/
 
-{{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'{{/router}}{{/vuex}}
-{{#vuex}}import store from './store'{{/vuex}}
-{{#router}}import router from './router'{{/router}}
-
-// You can use both the components found @https://bootstrap-vue.github.io/
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 
 // Or use manual bootstrap 4 from @https://v4-alpha.getbootstrap.com/getting-started/introduction/

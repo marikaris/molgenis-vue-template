@@ -17,16 +17,16 @@
 <script>
 {{#unless router}}
 import HelloWorld from './components/HelloWorld'
-
 {{/unless}}
+
 export default {
   {{#unless vuex}}
   props: ['message'],
   {{/unless}}
-  name: 'molgenis-app'{{#router}}{{else}},
+  name: 'molgenis-app'{{#unless router}},
   components: {
     HelloWorld
-  }{{/router}}
+  }{{/unless}}
 }
 </script>
 
