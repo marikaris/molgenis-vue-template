@@ -1,4 +1,5 @@
 {{#vuex}}import 'es6-promise/auto'{{/vuex}}
+import 'babel-polyfill'
 import Vue from 'vue'
 import MgApp from './MgApp'
 
