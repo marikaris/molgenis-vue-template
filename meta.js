@@ -36,6 +36,10 @@ module.exports = {
       "type": "confirm",
       "when": "vuex",
       "message": "Do you want to add typing to your project with Flow?"
+    },
+    "molgenis": {
+      "type": "confirm",
+      "message": "Do you want A Molgenis plugin? Note: This will change the location to which the production bundle is written. Updated location will be the target/classes directory of a maven module"
     }
   },
   "filters": {
