@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
-    <h1>This is the MOLGENIS Hello Component</h1>
+    <h1>This is the MOLGENIS HelloWorld Component</h1>
     <p>message: \{{ message }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'molgenis-hello',
+  name: 'hello-world',
   data () {
     return {
       message: {{#vuex}}this.$store.state.message{{else}}'Welcome to Your Vue.js App'{{/vuex}}

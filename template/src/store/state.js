@@ -4,6 +4,7 @@ export type State = {
   date: Date
 }
 {{/flow}}
+export const INITIAL_STATE = window.__INITIAL_STATE__ || {}
 
 const message{{#flow}}: string{{/flow}} = window.__INITIAL_STATE__
 const state{{#flow}}: State{{/flow}} = {

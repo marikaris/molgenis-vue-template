@@ -3,6 +3,17 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
+    {{#molgenis}}
+    index: path.resolve(__dirname, '../../../../target/classes/index.html'),
+    assetsRoot: path.resolve(__dirname, '../../../../target/classes'),
+    assetsSubDirectory: '',
+    assetsPublicPath: '/',
+    {{else}}
+    index: path.resolve(__dirname, '../dist/index.html'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    {{/molgenis}}
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
