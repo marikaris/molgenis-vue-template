@@ -22,7 +22,7 @@ Vue.use(VueSweetAlert)
 Vue.use(i18n, {
   lng: INITIAL_STATE.lng,
   fallbackLng: INITIAL_STATE.fallbackLng,
-  namespace: '{{#name}}',
+  namespace: '{{ name }}',
   callback () {
     /* eslint-disable no-new */
     new Vue({

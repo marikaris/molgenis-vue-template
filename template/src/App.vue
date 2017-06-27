@@ -7,8 +7,8 @@
 </template>
 
 <style lang="scss">
-  @import "~variables"
-  @import "~mixins"
+  @import "~variables";
+  @import "~mixins";
 
   #app {
     background-color: $red;
