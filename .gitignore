@@ -10,3 +10,4 @@ docs/_book
 test/**/**
 test/.**
 npm-debug.log
+.idea/codeStyleSettings.xml

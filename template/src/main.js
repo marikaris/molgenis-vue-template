@@ -1,41 +1,36 @@
-{{! @formatter:off }}
-{{#vuex}}import 'es6-promise/auto'{{/vuex}}
+import 'es6-promise/auto'
 import 'babel-polyfill'
+
 import Vue from 'vue'
+import store from './store'
+import router from './router'
+import i18n from '@molgenis/molgenis-i18n-js/dist/molgenis-i18n.esm'
+
+import { sync } from 'vuex-router-sync'
+import { INITIAL_STATE } from './store/state'
 
 import App from './App'
-{{#vuex}}{{#router}}import { sync } from 'vuex-router-sync'
-{{/router}}import store from './store'{{/vuex}}{{#router}}
-import router from './router'
-{{/router}}// You can use both the components found @https://bootstrap-vue.github.io/
+import VueSweetAlert from 'vue-sweetalert'
 
-import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
+import 'bootstrap/dist/css/bootstrap.css' // Bootstrap import
+import 'font-awesome/css/font-awesome.min.css' // Font awesome import
 
-// Or use manual bootstrap 4 from @https://v4-alpha.getbootstrap.com/getting-started/introduction/
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-{{#vuex}}{{#router}}
-// Keeps the router and the store in sync @https://github.com/vuejs/vuex-router-sync
 sync(store, router)
-{{/router}}{{/vuex}}
-Vue.use(BootstrapVue)
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  {{#vuex}}
-  store,
-  {{/vuex}}
-  {{#router}}
-  router,
-  {{/router}}
-  {{#vuex}}
-  template: '<App />',
-  {{else}}
-  data: {
-    message: window.__INITIAL_STATE__.message
-  },
-  template: '<App :message="message"></App>',
-  {{/vuex}}
-  components: { App }
+Vue.use(VueSweetAlert)
+
+Vue.use(i18n, {
+  lng: INITIAL_STATE.lng,
+  fallbackLng: INITIAL_STATE.fallbackLng,
+  namespace: '{{#name}}',
+  callback () {
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      store,
+      router,
+      template: '<App />',
+      components: { App }
+    })
+  }
 })

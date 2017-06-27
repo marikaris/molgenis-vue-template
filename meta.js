@@ -24,29 +24,10 @@ module.exports = {
       "type": "string",
       "message": "Author"
     },
-    "vuex" : {
-      "type": "confirm",
-      "message": "install vuex?"
-    },
-    "router": {
-      "type": "confirm",
-      "message": "Install vue-router?"
-    },
-    "flow" : {
-      "type": "confirm",
-      "when": "vuex",
-      "message": "Do you want to add typing to your project with Flow?"
-    },
     "molgenis": {
       "type": "confirm",
       "message": "Do you want A Molgenis plugin? Note: This will change the location to which the production bundle is written. Updated location will be the target/classes directory of a maven module"
     }
-  },
-  "filters": {
-    "src/store/**/*": "vuex",
-    "src/router/**/*": "router",
-    ".flowconfig": "flow",
-    "flow.examples.js": "flow"
   },
   "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn install\n  yarn run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };

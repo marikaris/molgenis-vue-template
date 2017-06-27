@@ -1,38 +1,27 @@
 <template>
-  <div class="hello">
-    <h1>This is the MOLGENIS HelloWorld Component</h1>
-    <p>message: \{{ message }}</p>
+  <div class="row">
+    <div class="col align-middle">
+      <h1>This is the MOLGENIS HelloWorld Component</h1>
+      <p>message: \{{ message }}</p>
+      <button @click="showSweetAlert" class="btn btn-secondary btn-lg">Click me for a sweet alert</button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'hello-world',
-  data () {
-    return {
-      message: {{#vuex}}this.$store.state.message{{else}}'Welcome to Your Vue.js App'{{/vuex}}
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'hello-world',
+    methods: {
+      showSweetAlert () {
+        // if you want to learn more about sweetalert2's api,
+        // please go to its homepage https://github.com/limonte/sweetalert2
+        this.$swal('Hello sweet world!')
+      }
+    },
+    computed: {
+      ...mapState(['message'])
     }
   }
-}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
