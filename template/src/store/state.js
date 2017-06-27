@@ -1,15 +1,10 @@
-{{#flow}}// @flow
-export type State = {
-  message: string,
-  date: Date
-}
-{{/flow}}
+// @flow
+import type { State } from './utils/flow.types'
+
 export const INITIAL_STATE = window.__INITIAL_STATE__ || {}
 
-const message{{#flow}}: string{{/flow}} = window.__INITIAL_STATE__
-const state{{#flow}}: State{{/flow}} = {
-  message,
-  date: new Date()
+const state: State = {
+  message: INITIAL_STATE.message
 }
 
 export default state

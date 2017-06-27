@@ -1,7 +1,8 @@
 [ignore]
 .*/node_modules/config-chain/test/broken.json
 .*/node_modules/vue/.*
-{{#router}}.*/node_modules/vue-router/.*{{/router}}
+.*/node_modules/vue-router/.*
+*.vue
 
 [include]
 ./src/.*
