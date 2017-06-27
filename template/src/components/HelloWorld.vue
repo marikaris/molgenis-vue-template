@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col align-middle">
+    <div class="col text-center">
       <h1>This is the MOLGENIS HelloWorld Component</h1>
       <p>message: \{{ message }}</p>
       <button @click="showSweetAlert" class="btn btn-secondary btn-lg">Click me for a sweet alert</button>
