@@ -6,7 +6,7 @@
       {{name}}
     </h5>
     <div class="card-block" v-show="showContent">
-      <filter-checkbox v-for="option in options" :name="option" :label="option"></filter-checkbox>
+      <filter-checkbox v-for="option in options" :name="option.name" :label="option.label" :total="option.total"></filter-checkbox>
     </div>
   </div>
 </template>
@@ -33,7 +33,6 @@
     },
     methods: {
       showOptions () {
-        console.log(this.showContent)
         this.showContent = !this.showContent
         return this.showContent
       }

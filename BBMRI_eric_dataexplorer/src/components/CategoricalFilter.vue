@@ -1,6 +1,6 @@
 <template>
   <div class="card" id="categorical_filter">
-    <p class="card-text text-left">
+    <p class="card-text">
       <filter-option v-for="filter in filters" :name="filter.filter" :options="filter.options"></filter-option>
     </p>
   </div>
@@ -22,10 +22,38 @@
     data: function () {
       return {
         filters: [
-          {filter: 'Primary site', options: ['Blood', 'Breast', 'Brain', 'Liver', 'Head and neck', 'Foot', 'Toe']},
-          {filter: 'Project', options: ['Project1', 'Project2']},
-          {filter: 'Study', options: ['Study1', 'Study2']},
-          {filter: 'Gender', options: ['Male', 'Female', 'No data']}]
+          {
+            filter: 'Primary site',
+            options: [
+              {label: 'Blood', name: 'blood', total: 2826},
+              {label: 'Breast', name: 'breast', total: 1976},
+              {label: 'Brain', name: 'brain', total: 1745},
+              {label: 'Liver', name: 'liver', total: 1549},
+              {label: 'Head and neck', name: 'head_and_neck', total: 1345},
+              {label: 'Foot', name: 'foot', total: 1234},
+              {label: 'Toe', name: 'toe', total: 1098}]
+          },
+          {
+            filter: 'Project',
+            options: [
+              {label: 'project1', name: 'blood', total: 5023},
+              {label: 'project2', name: 'breast', total: 3456},
+              {label: 'project3', name: 'brain', total: 2345}
+            ]
+          },
+          {
+            filter: 'Study',
+            options: [
+              {label: 'study1', name: 'blood', total: 5023},
+              {label: 'study2', name: 'breast', total: 3456},
+              {label: 'study3', name: 'brain', total: 2345}]
+          },
+          {
+            filter: 'Gender',
+            options: [{label: 'Male', name: 'm', total: 2826},
+              {label: 'Female', name: 'f', total: 1976},
+              {label: 'No data', name: 'nd', total: 1745}]
+          }]
       }
     },
     components: {
