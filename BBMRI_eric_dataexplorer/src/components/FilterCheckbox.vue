@@ -1,11 +1,21 @@
 <template>
-  <div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="..."> {{label}}
-  </label>
-</div>
+  <div class="form-check filter_checkbox">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="..."> {{label}}
+    </label>
+  </div>
 </template>
+<style lang="scss">
+  @import "~variables";
+  @import "~mixins";
 
+  .filter_checkbox {
+    background-color: $white;
+    padding: 0.3em;
+    width: 100%;
+
+  }
+</style>
 <script>
 
   export default {

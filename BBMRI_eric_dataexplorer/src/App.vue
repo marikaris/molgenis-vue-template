@@ -12,6 +12,7 @@
 
   #app {
     background-color: $white;
+    text-align: left!important;
 
   }
 </style>
