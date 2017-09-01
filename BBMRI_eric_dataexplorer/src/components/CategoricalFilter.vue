@@ -8,10 +8,9 @@
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-
   #categorical_filter {
     background-color: $gray-lightest;
-
+    height: 100%
   }
 </style>
 <script>
@@ -24,11 +23,11 @@
       return {
         filters: [
           {
-            filter: 'Primary site',
+            filter: 'Country',
             options: [
-              {label: 'Blood', name: 'blood', total: 2826},
-              {label: 'Breast', name: 'breast', total: 1976},
-              {label: 'Brain', name: 'brain', total: 1745},
+              {label: 'Austria', name: 'blood', total: 2826},
+              {label: 'Belgium', name: 'breast', total: 1976},
+              {label: 'Czech Republic', name: 'brain', total: 1745},
               {label: 'Liver', name: 'liver', total: 1549},
               {label: 'Head and neck', name: 'head_and_neck', total: 1345},
               {label: 'Foot', name: 'foot', total: 1234},
