@@ -4,10 +4,7 @@
       <input class="form-check-input" type="checkbox">
       <div class="d-flex justify-content-between">
         <div>
-          {{label}}
-        </div>
-        <div>
-          {{total}}
+          <span v-if="label">{{label}}</span><span v-if="name">{{name}}</span>
         </div>
       </div>
     </label>
@@ -29,6 +26,6 @@
 
   export default {
     name: 'filter-checkbox',
-    props: ['name', 'label', 'total']
+    props: ['id', 'name', 'label']
   }
 </script>

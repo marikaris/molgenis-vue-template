@@ -15,7 +15,7 @@
 </style>
 <script>
   import FilterOption from './FilterOption'
-  import { GET_BIOBANKS } from '../store/actions'
+  import { GET_BIOBANKS, GET_COUNTRIES } from '../store/actions'
 
   export default {
     name: 'categorical-filter',
@@ -24,35 +24,25 @@
         filters: [
           {
             filter: 'Country',
-            options: [
-              {label: 'Austria', name: 'blood', total: 2826},
-              {label: 'Belgium', name: 'breast', total: 1976},
-              {label: 'Czech Republic', name: 'brain', total: 1745},
-              {label: 'Liver', name: 'liver', total: 1549},
-              {label: 'Head and neck', name: 'head_and_neck', total: 1345},
-              {label: 'Foot', name: 'foot', total: 1234},
-              {label: 'Toe', name: 'toe', total: 1098}]
+            options: this.$store.state.countries
           },
           {
             filter: 'Project',
             options: [
-              {label: 'project1', name: 'blood', total: 5023},
-              {label: 'project2', name: 'breast', total: 3456},
-              {label: 'project3', name: 'brain', total: 2345}
             ]
           },
           {
             filter: 'Study',
             options: [
-              {label: 'study1', name: 'blood', total: 5023},
-              {label: 'study2', name: 'breast', total: 3456},
-              {label: 'study3', name: 'brain', total: 2345}]
+              {id: 'study1', label: 'blood'},
+              {id: 'study2', label: 'breast'},
+              {id: 'study3', label: 'brain'}]
           },
           {
             filter: 'Gender',
-            options: [{label: 'Male', name: 'm', total: 2826},
-              {label: 'Female', name: 'f', total: 1976},
-              {label: 'No data', name: 'nd', total: 1745}]
+            options: [{label: 'Male', id: 'm'},
+              {label: 'Female', id: 'f'},
+              {label: 'No data', id: 'nd'}]
           }]
       }
     },
@@ -61,6 +51,7 @@
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANKS)
+      this.$store.dispatch(GET_COUNTRIES)
     }
   }
 </script>
