@@ -1,10 +1,11 @@
-// @flow
-import type { State } from './utils/flow.types'
-
-export const SET_MESSAGE = '__SET_MESSAGE__'
+export const SET_BIOBANKS = '__SET_BIOBANKS__'
+export const SET_ERROR = '__SET_ERROR__'
 
 export default {
-  [SET_MESSAGE] (state: State, message: string) {
-    state.message = message
+  [SET_BIOBANKS] (state, biobanks) {
+    state.biobanks = biobanks
+  },
+  [SET_ERROR] (state, error) {
+    state.error = error
   }
 }

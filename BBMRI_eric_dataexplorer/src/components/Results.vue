@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div id="results">
     <result v-for="result in results" :name="result.name" :info="result.info"></result>
   </div>
 </template>
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-
+  #results{
+    width: 100%;
+  }
 </style>
 <script>
   import Result from './Result'

@@ -16,6 +16,7 @@
 </style>
 <script>
   import FilterOption from './FilterOption'
+  import { GET_BIOBANKS } from '../store/actions'
 
   export default {
     name: 'categorical-filter',
@@ -58,6 +59,9 @@
     },
     components: {
       FilterOption
+    },
+    mounted () {
+      this.$store.dispatch(GET_BIOBANKS)
     }
   }
 </script>

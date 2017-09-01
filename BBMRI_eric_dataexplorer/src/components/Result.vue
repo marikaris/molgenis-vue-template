@@ -1,5 +1,5 @@
 <template>
-  <div class="card" id="results">
+  <div class="card biobank_card">
     <div class="card-block">
       <div class="d-flex justify-content-between">
         <div>
@@ -17,9 +17,8 @@
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-
-  #results {
-    width: 100%;
+  .biobank_card{
+    background-color: $gray-lightest;
   }
 </style>
 <script>
