@@ -6,8 +6,8 @@
           <h5>{{name}}</h5>
         </div>
         <div>
-          <div v-for="item in info">
-            <small><b>{{item.label}}</b>: {{item.value}}</small>
+          <div v-for="key in keys">
+            <small><b>{{key}}</b>: {{info[key]}}</small>
           </div>
         </div>
       </div>
@@ -25,6 +25,6 @@
 
   export default {
     name: 'filter-checkbox',
-    props: ['name', 'info']
+    props: ['name', 'info', 'keys']
   }
 </script>

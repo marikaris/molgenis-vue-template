@@ -1,12 +1,13 @@
 <template>
   <div id="results">
-    <result v-for="result in results" :name="result.name" :info="result.info"></result>
+    <result v-for="result in results" :name="result.name" :info="result" :keys="keys"></result>
   </div>
 </template>
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-  #results{
+
+  #results {
     width: 100%;
   }
 </style>
@@ -15,31 +16,14 @@
   export default {
     name: 'results',
     components: {Result},
+    computed: {
+      results: function () {
+        return this.$store.state.biobanks
+      }
+    },
     data: function () {
       return {
-        results: [
-          {
-            name: 'MedUni Wien Biobank',
-            info: [
-              {key: 'biobank_type', label: 'Biobank Type', value: 'Clinical, Research study, Human'},
-              {key: 'juridical_person', label: 'Juridical Person', value: 'Medical University of Vienna'}
-            ]
-          },
-          {
-            name: 'Biobank Innsbruck',
-            info: [
-              {key: 'biobank_type', label: 'Biobank Type', value: 'Clinical, Research study, Human'},
-              {key: 'juridical_person', label: 'Juridical Person', value: 'Medical University of Innsbruck'}
-            ]
-          },
-          {
-            name: 'Biobank @ UZ Brussel',
-            info: [
-              {key: 'biobank_type', label: 'Biobank Type', value: 'Clinical, Research study, Human'},
-              {key: 'juridical_person', label: 'Juridical Person', value: 'Universitair Ziekenhuis Brussel'}
-            ]
-          }
-        ]
+        keys: ['juridical_person']
       }
     }
   }
