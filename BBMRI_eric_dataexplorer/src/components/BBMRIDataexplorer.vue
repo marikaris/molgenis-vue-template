@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-md-12" id="search">
-          Search box here
+          <search-box></search-box>
         </div>
       </div>
       <div class="row">
@@ -25,9 +25,10 @@
 <script>
   import CategoricalFilter from './CategoricalFilter'
   import Results from './Results'
+  import SearchBox from './SearchBox'
 
   export default {
     name: 'bbmri-dataexplorer',
-    components: {CategoricalFilter, Results}
+    components: {CategoricalFilter, Results, SearchBox}
   }
 </script>

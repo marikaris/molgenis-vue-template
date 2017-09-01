@@ -19,6 +19,7 @@
   @import "~mixins";
   .biobank_card{
     background-color: $gray-lightest;
+    margin-top: 1em;
   }
 </style>
 <script>
