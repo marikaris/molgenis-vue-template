@@ -20,9 +20,11 @@
     components: {Result},
     computed: {
       results: function () {
-        let filterSet = (this.$store.state.filters.diagnosis.selectedOptions.length +
-                          this.$store.state.filters.material_types.selectedOptions.length +
-                          this.$store.state.filters.quality.selectedOptions.length) > 0
+        let filterSet = (this.$store.state.filter.filters.diagnosis.selectedOptions.length +
+                          this.$store.state.filter.filters.material_types.selectedOptions.length +
+                          this.$store.state.filter.filters.quality.selectedOptions.length) > 0 |
+                          this.$store.state.filter.searchQuery.length > 0
+        console.log(filterSet)
         let filteredBiobanks = []
         let biobanks = this.$store.state.biobanks
         if (filterSet) {

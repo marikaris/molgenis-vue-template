@@ -64,12 +64,14 @@ export default {
       commit(SET_ERROR, error)
     })
   },
-  [GET_COLLECTIONS] ({commit}, filters) {
+  [GET_COLLECTIONS] ({commit}, filter) {
     /**
      * Pass options to the fetch like body, method, x-molgenis-token etc...
      * @type {{}}
      */
+    let filters = filter.filters
     const options = {}
+    let queryParts = []
     let query = ''
     Object.keys(filters).map(function (key, index) {
       let filter = filters[key]
@@ -77,15 +79,19 @@ export default {
         let selectedOptions = filter.selectedOptions
         let collectionsAttr = filter.attributeName
         if (selectedOptions.length > 0) {
-          if (!query) {
-            query += '&q='
-          } else {
-            query += ';'
-          }
-          query += collectionsAttr + '=in=("' + selectedOptions.join('","') + '")'
+          queryParts.push(collectionsAttr + '=in=("' + selectedOptions.join('","') + '")')
         }
       }
     })
+    if (filter.searchQuery) {
+      console.log(filter.searchQuery)
+      queryParts.push('*=q=' + filter.searchQuery)
+    }
+    if (queryParts.length) {
+      console.log(queryParts)
+      query = '&q=' + queryParts.join(';')
+    }
+    console.log(query)
     let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=10000' + query
     get(apiUrl, options).then(response => {
       commit(SET_COLLECTIONS, response.items)

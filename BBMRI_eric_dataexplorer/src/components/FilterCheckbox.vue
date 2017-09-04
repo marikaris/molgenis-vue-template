@@ -30,10 +30,10 @@
     computed: {
       value: {
         get: function () {
-          return this.$store.state.filters[this.partOf].selectedOptions.indexOf(this.id) !== -1
+          return this.$store.state.filter.filters[this.partOf].selectedOptions.indexOf(this.id) !== -1
         },
         set: function (checked) {
-          let filters = this.$store.state.filters[this.partOf].selectedOptions.slice()
+          let filters = this.$store.state.filter.filters[this.partOf].selectedOptions.slice()
           if (checked) {
             filters.push(this.id)
           } else {
@@ -41,10 +41,10 @@
             filters.splice(index, 1)
           }
           this.$store.commit(SET_FILTER, { name: this.partOf, newSelectedOptions: filters })
-          if (this.$store.state.filters[this.partOf].entityTypeName === 'eu_bbmri_eric_biobanks') {
-            this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters[this.partOf].selectedOptions)
+          if (this.$store.state.filter.filters[this.partOf].entityTypeName === 'eu_bbmri_eric_biobanks') {
+            this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters[this.partOf].selectedOptions)
           } else {
-            this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filters)
+            this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filter)
           }
         }
       }
