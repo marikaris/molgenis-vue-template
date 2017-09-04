@@ -1,9 +1,10 @@
 import { get } from '@molgenis/molgenis-api-client'
-import {SET_BIOBANKS, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_ERROR} from './mutations'
+import {SET_BIOBANKS, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_QUALITY, SET_ERROR} from './mutations'
 
 export const GET_BIOBANKS = '__GET_BIOBANKS__'
 export const GET_COUNTRIES = '__GET_COUNTRIES__'
 export const GET_MATERIAL_TYPES = '__GET_MATERIAL_TYPES__'
+export const GET_QUALITY = '__GET_QUALITY__'
 
 export default {
   /**
@@ -41,6 +42,18 @@ export default {
     const options = {}
     get('/api/v2/eu_bbmri_eric_material_types?num=10000', options).then(response => {
       commit(SET_MATERIAL_TYPES, response.items)
+    }, error => {
+      commit(SET_ERROR, error)
+    })
+  },
+  [GET_QUALITY] ({commit}) {
+    /**
+     * Pass options to the fetch like body, method, x-molgenis-token etc...
+     * @type {{}}
+     */
+    const options = {}
+    get('/api/v2/eu_bbmri_eric_ops_standards?num=10000', options).then(response => {
+      commit(SET_QUALITY, response.items)
     }, error => {
       commit(SET_ERROR, error)
     })
