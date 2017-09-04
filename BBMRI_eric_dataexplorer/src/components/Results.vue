@@ -1,6 +1,6 @@
 <template>
   <div id="results">
-    <result v-for="result in results" :name="result.name" :info="result" :keys="keys"></result>
+    <result v-for="result in results" :key="result.name":name="result.name" :info="result" :keys="keys"></result>
   </div>
 </template>
 <style lang="scss">

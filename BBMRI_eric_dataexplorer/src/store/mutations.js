@@ -7,7 +7,7 @@ export default {
     state.biobanks = biobanks
   },
   [SET_COUNTRIES] (state, countries) {
-    state.countries = countries
+    state.filters.countries.options = countries
   },
   [SET_ERROR] (state, error) {
     state.error = error

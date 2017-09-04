@@ -6,7 +6,13 @@
       {{name}}
     </h5>
     <div class="card-block" v-show="showContent">
-      <filter-checkbox v-for="option in options" :id="option.id" :label="option.label" :name="option.name":total="option.total"></filter-checkbox>
+      <filter-checkbox v-for="option in options"
+                       :key="option.id"
+                       :id="option.id"
+                       :label="option.label"
+                       :name="option.name">
+
+      </filter-checkbox>
     </div>
   </div>
 </template>

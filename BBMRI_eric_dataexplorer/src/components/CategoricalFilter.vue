@@ -1,7 +1,7 @@
 <template>
   <div class="card" id="categorical_filter">
     <p class="card-text">
-      <filter-option v-for="filter in filters" :name="filter.filter" :options="filter.options"></filter-option>
+      <filter-option v-for="filter in filters" :key="filter.filter" :name="filter.filter" :options="filter.options"></filter-option>
     </p>
   </div>
 </template>
@@ -20,30 +20,9 @@
   export default {
     name: 'categorical-filter',
     data: function () {
+      console.log(this.$store.state.countries, 'countries')
       return {
-        filters: [
-          {
-            filter: 'Country',
-            options: this.$store.state.countries
-          },
-          {
-            filter: 'Project',
-            options: [
-            ]
-          },
-          {
-            filter: 'Study',
-            options: [
-              {id: 'study1', label: 'blood'},
-              {id: 'study2', label: 'breast'},
-              {id: 'study3', label: 'brain'}]
-          },
-          {
-            filter: 'Gender',
-            options: [{label: 'Male', id: 'm'},
-              {label: 'Female', id: 'f'},
-              {label: 'No data', id: 'nd'}]
-          }]
+        filters: this.$store.state.filters
       }
     },
     components: {
@@ -51,7 +30,9 @@
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANKS)
+      console.log('1. get countries')
       this.$store.dispatch(GET_COUNTRIES)
+      console.log('2. get countries')
     }
   }
 </script>
