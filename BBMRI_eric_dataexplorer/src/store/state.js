@@ -5,23 +5,26 @@ export const INITIAL_STATE = window.__INITIAL_STATE__ || {}
 const state = {
   error: undefined,
   biobanks: [],
-  countries: [],
   filters: {
     countries: {
       filter: 'Country',
-      options: []
+      options: [],
+      selectedOptions: []
     },
     diagnosis: {
       filter: 'Diagnosis',
-      options: []
+      options: [],
+      selectedOptions: []
     },
     material_types: {
       filter: 'Material type',
-      options: []
+      options: [],
+      selectedOptions: []
     },
     quality: {
       filter: 'Quality',
-      options: []
+      options: [],
+      selectedOptions: []
     }
   }
 }

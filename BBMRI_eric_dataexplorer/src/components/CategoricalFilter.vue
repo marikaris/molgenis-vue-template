@@ -1,7 +1,7 @@
 <template>
   <div class="card" id="categorical_filter">
     <p class="card-text">
-      <filter-option v-for="filter in filters" :key="filter.filter" :name="filter.filter" :options="filter.options"></filter-option>
+      <filter-option v-for="(filter, id) in filters" :key="filter.filter" :name="filter.filter" :options="filter.options" :id="id"></filter-option>
     </p>
   </div>
 </template>

@@ -12,7 +12,8 @@
                        :label="option.label"
                        :name="option.name"
                        :index="index"
-                       :showAll="showAllContent">
+                       :showAll="showAllContent"
+                       :partOf="id">
 
       </filter-checkbox>
       <p class="text-right" v-if="options.length > 5" v-show="!showAllContent"><a href="#" @click="toggleAllOptions">
@@ -38,12 +39,13 @@
 
   export default {
     name: 'filter-option',
-    props: ['name', 'options'],
+    props: ['id', 'name', 'options'],
     components: {FilterCheckbox},
     data: function () {
       return {
         showContent: false,
-        showAllContent: false
+        showAllContent: false,
+        selectedOptions: this.$store.state[this.id]
       }
     },
     methods: {
