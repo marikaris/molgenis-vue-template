@@ -1,12 +1,11 @@
 <template>
-  <div class="form-check filter_checkbox">
+  <div class="form-check filter_checkbox" v-show="index<4 | showAll">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox">
       <div class="d-flex justify-content-between">
-        <div>
           <span v-if="label">{{label}}</span><span v-if="name">{{name}}</span>
-        </div>
       </div>
+
     </label>
   </div>
 </template>
@@ -26,6 +25,6 @@
 
   export default {
     name: 'filter-checkbox',
-    props: ['id', 'name', 'label']
+    props: ['id', 'name', 'label', 'index', 'showAll']
   }
 </script>
