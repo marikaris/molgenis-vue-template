@@ -19,7 +19,6 @@ export default {
     state.filters.quality.options = quality
   },
   [SET_FILTER] (state, {name, newSelectedOptions}) {
-    console.log(name, newSelectedOptions)
     state.filters[name].selectedOptions = newSelectedOptions
   },
   [SET_ERROR] (state, error) {

@@ -23,6 +23,7 @@
 </style>
 <script>
   import { SET_FILTER } from '../store/mutations'
+  import { GET_BIOBANKS } from '../store/actions'
   export default {
     name: 'filter-checkbox',
     props: ['id', 'name', 'label', 'index', 'showAll', 'partOf'],
@@ -40,6 +41,7 @@
             filters.splice(index, 1)
           }
           this.$store.commit(SET_FILTER, { name: this.partOf, newSelectedOptions: filters })
+          this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters[this.partOf].selectedOptions)
         }
       }
     }
