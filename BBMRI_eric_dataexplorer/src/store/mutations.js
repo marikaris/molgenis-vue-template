@@ -4,6 +4,7 @@ export const SET_MATERIAL_TYPES = '__SET_MATERIAL_TYPES__'
 export const SET_QUALITY = '__SET_QUALITY__'
 export const SET_FILTER = '__SET_FILTER__'
 export const SET_ERROR = '__SET_ERROR__'
+export const SET_COLLECTIONS = '__SET_COLLECTIONS__'
 
 export default {
   [SET_BIOBANKS] (state, biobanks) {
@@ -20,6 +21,9 @@ export default {
   },
   [SET_FILTER] (state, {name, newSelectedOptions}) {
     state.filters[name].selectedOptions = newSelectedOptions
+  },
+  [SET_COLLECTIONS] (state, collections) {
+    state.collections = collections
   },
   [SET_ERROR] (state, error) {
     state.error = error
