@@ -20,7 +20,6 @@
   export default {
     name: 'categorical-filter',
     data: function () {
-      console.log(this.$store.state.countries, 'countries')
       return {
         filters: this.$store.state.filters
       }
@@ -30,9 +29,7 @@
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANKS)
-      console.log('1. get countries')
       this.$store.dispatch(GET_COUNTRIES)
-      console.log('2. get countries')
     }
   }
 </script>
