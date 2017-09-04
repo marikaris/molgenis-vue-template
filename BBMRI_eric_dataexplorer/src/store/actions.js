@@ -21,7 +21,6 @@ export default {
     if (selectedOptions.length > 0) {
       query = '&q=country=in=("' + selectedOptions.join('","') + '")'
     }
-    console.log(query)
     let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?num=10000' + query
     get(apiUrl, options).then(response => {
       commit(SET_BIOBANKS, response.items)
