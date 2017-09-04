@@ -15,7 +15,7 @@
 </style>
 <script>
   import FilterOption from './FilterOption'
-  import { GET_BIOBANKS, GET_COUNTRIES } from '../store/actions'
+  import { GET_BIOBANKS, GET_COUNTRIES, GET_MATERIAL_TYPES } from '../store/actions'
 
   export default {
     name: 'categorical-filter',
@@ -30,6 +30,7 @@
     mounted () {
       this.$store.dispatch(GET_BIOBANKS)
       this.$store.dispatch(GET_COUNTRIES)
+      this.$store.dispatch(GET_MATERIAL_TYPES)
     }
   }
 </script>
