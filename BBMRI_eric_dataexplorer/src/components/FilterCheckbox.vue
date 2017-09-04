@@ -23,7 +23,7 @@
 </style>
 <script>
   import { SET_FILTER } from '../store/mutations'
-  import { GET_BIOBANKS } from '../store/actions'
+  import { GET_BIOBANKS, GET_COLLECTIONS } from '../store/actions'
   export default {
     name: 'filter-checkbox',
     props: ['id', 'name', 'label', 'index', 'showAll', 'partOf'],
@@ -33,7 +33,7 @@
           return this.$store.state.filters[this.partOf].selectedOptions.indexOf(this.id) !== -1
         },
         set: function (checked) {
-          let filters = this.$store.state.filters[this.partOf].selectedOptions
+          let filters = this.$store.state.filters[this.partOf].selectedOptions.slice()
           if (checked) {
             filters.push(this.id)
           } else {
@@ -41,7 +41,11 @@
             filters.splice(index, 1)
           }
           this.$store.commit(SET_FILTER, { name: this.partOf, newSelectedOptions: filters })
-          this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters[this.partOf].selectedOptions)
+          if (this.$store.state.filters[this.partOf].entityTypeName === 'eu_bbmri_eric_biobanks') {
+            this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters[this.partOf].selectedOptions)
+          } else {
+            this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filters)
+          }
         }
       }
     }

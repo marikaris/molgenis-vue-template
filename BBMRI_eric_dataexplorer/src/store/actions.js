@@ -1,5 +1,5 @@
 import { get } from '@molgenis/molgenis-api-client'
-import {SET_BIOBANKS, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_QUALITY, SET_COLLECTIONS, SET_ERROR} from './mutations'
+import { SET_BIOBANKS, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_QUALITY, SET_COLLECTIONS, SET_ERROR } from './mutations'
 
 export const GET_BIOBANKS = '__GET_BIOBANKS__'
 export const GET_COUNTRIES = '__GET_COUNTRIES__'
@@ -21,6 +21,7 @@ export default {
     if (selectedOptions.length > 0) {
       query = '&q=country=in=("' + selectedOptions.join('","') + '")'
     }
+    console.log(query)
     let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?num=10000' + query
     get(apiUrl, options).then(response => {
       commit(SET_BIOBANKS, response.items)
@@ -64,13 +65,30 @@ export default {
       commit(SET_ERROR, error)
     })
   },
-  [GET_COLLECTIONS] ({commit}) {
+  [GET_COLLECTIONS] ({commit}, filters) {
     /**
      * Pass options to the fetch like body, method, x-molgenis-token etc...
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_collections?num=10000', options).then(response => {
+    let query = ''
+    Object.keys(filters).map(function (key, index) {
+      let filter = filters[key]
+      if (filter.entityTypeName === 'eu_bbmri_eric_collections') {
+        let selectedOptions = filter.selectedOptions
+        let collectionsAttr = filter.attributeName
+        if (selectedOptions.length > 0) {
+          if (!query) {
+            query += '&q='
+          } else {
+            query += ';'
+          }
+          query += collectionsAttr + '=in=("' + selectedOptions.join('","') + '")'
+        }
+      }
+    })
+    let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=10000' + query
+    get(apiUrl, options).then(response => {
       commit(SET_COLLECTIONS, response.items)
     }, error => {
       commit(SET_ERROR, error)

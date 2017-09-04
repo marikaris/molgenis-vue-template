@@ -29,7 +29,7 @@
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters.countries.selectedOptions)
-      this.$store.dispatch(GET_COLLECTIONS)
+      this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filters)
       this.$store.dispatch(GET_COUNTRIES)
       this.$store.dispatch(GET_MATERIAL_TYPES)
       this.$store.dispatch(GET_QUALITY)

@@ -8,21 +8,29 @@ const state = {
   collections: [],
   filters: {
     countries: {
+      entityTypeName: 'eu_bbmri_eric_biobanks',
+      attributeName: 'country',
       filter: 'Country',
       options: [],
       selectedOptions: []
     },
     diagnosis: {
+      entityTypeName: 'eu_bbmri_eric_collections',
+      attributeName: 'diagnosis_available',
       filter: 'Diagnosis',
       options: [],
       selectedOptions: []
     },
     material_types: {
+      entityTypeName: 'eu_bbmri_eric_collections',
+      attributeName: 'materials',
       filter: 'Material type',
       options: [],
       selectedOptions: []
     },
     quality: {
+      entityTypeName: 'eu_bbmri_eric_collections',
+      attributeName: 'standards',
       filter: 'Quality',
       options: [],
       selectedOptions: []
