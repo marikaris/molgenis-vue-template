@@ -1,7 +1,8 @@
 import { get } from '@molgenis/molgenis-api-client'
-import { SET_BIOBANKS, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_QUALITY, SET_COLLECTIONS, SET_ERROR } from './mutations'
+import { SET_BIOBANKS, SET_BIOBANK, SET_COUNTRIES, SET_MATERIAL_TYPES, SET_QUALITY, SET_COLLECTIONS, SET_ERROR } from './mutations'
 
 export const GET_BIOBANKS = '__GET_BIOBANKS__'
+export const GET_BIOBANK = '__GET_BIOBANK__'
 export const GET_COUNTRIES = '__GET_COUNTRIES__'
 export const GET_MATERIAL_TYPES = '__GET_MATERIAL_TYPES__'
 export const GET_QUALITY = '__GET_QUALITY__'
@@ -23,7 +24,7 @@ export default {
     }
     let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?num=10000' + query
     get(apiUrl, options).then(response => {
-      commit(SET_BIOBANKS, response.items)
+      commit(SET_BIOBANKS, response)
     }, error => {
       commit(SET_ERROR, error)
     })
@@ -35,6 +36,7 @@ export default {
      */
     const options = {}
     get('/api/v2/eu_bbmri_eric_countries?num=10000', options).then(response => {
+      // FIXME: get complete response and show label attribute in checkbox
       commit(SET_COUNTRIES, response.items)
     }, error => {
       commit(SET_ERROR, error)
@@ -84,17 +86,23 @@ export default {
       }
     })
     if (filter.searchQuery) {
-      console.log(filter.searchQuery)
       queryParts.push('*=q=' + filter.searchQuery)
     }
     if (queryParts.length) {
-      console.log(queryParts)
       query = '&q=' + queryParts.join(';')
     }
-    console.log(query)
     let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=10000' + query
     get(apiUrl, options).then(response => {
-      commit(SET_COLLECTIONS, response.items)
+      commit(SET_COLLECTIONS, response)
+    }, error => {
+      commit(SET_ERROR, error)
+    })
+  },
+  [GET_BIOBANK] ({commit}, biobankId) {
+    const options = {}
+    let apiUrl = '/api/v2/eu_bbmri_eric_biobanks/' + biobankId
+    get(apiUrl, options).then(response => {
+      commit(SET_BIOBANK, response)
     }, error => {
       commit(SET_ERROR, error)
     })

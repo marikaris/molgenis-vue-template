@@ -24,12 +24,11 @@
                           this.$store.state.filter.filters.material_types.selectedOptions.length +
                           this.$store.state.filter.filters.quality.selectedOptions.length) > 0 |
                           this.$store.state.filter.isSearchClicked
-        console.log(filterSet)
         let filteredBiobanks = []
-        let biobanks = this.$store.state.biobanks
+        let biobanks = this.$store.state.biobanks.items
         if (filterSet) {
           let selection = new Set()
-          let collections = this.$store.state.collections
+          let collections = this.$store.state.collections.items
           collections.map(function (collection) {
             selection.add(collection.biobank.id)
           })

@@ -1,4 +1,5 @@
 export const SET_BIOBANKS = '__SET_BIOBANKS__'
+export const SET_BIOBANK = '__SET_BIOBANK__'
 export const SET_COUNTRIES = '__SET_COUNTRIES__'
 export const SET_MATERIAL_TYPES = '__SET_MATERIAL_TYPES__'
 export const SET_QUALITY = '__SET_QUALITY__'
@@ -35,5 +36,8 @@ export default {
   },
   [SET_SEARCH_CLICKED] (state, value) {
     state.filter.isSearchClicked = value
+  },
+  [SET_BIOBANK] (state, biobank) {
+    state.selectedBiobank = biobank
   }
 }

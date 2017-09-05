@@ -4,8 +4,9 @@ export const INITIAL_STATE = window.__INITIAL_STATE__ || {}
 
 const state = {
   error: undefined,
-  biobanks: [],
-  collections: [],
+  selectedBiobank: {},
+  biobanks: {},
+  collections: {},
   filter: {
     searchQuery: '',
     isSearchClicked: false,
