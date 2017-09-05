@@ -6,6 +6,7 @@ export const SET_FILTER = '__SET_FILTER__'
 export const SET_ERROR = '__SET_ERROR__'
 export const SET_COLLECTIONS = '__SET_COLLECTIONS__'
 export const SET_SEARCH_QUERY = '__SET_SEARCH_QUERY__'
+export const SET_SEARCH_CLICKED = '__SET_SEARCH_CLICKED__'
 
 export default {
   [SET_BIOBANKS] (state, biobanks) {
@@ -31,5 +32,8 @@ export default {
   },
   [SET_SEARCH_QUERY] (state, query) {
     state.filter.searchQuery = query
+  },
+  [SET_SEARCH_CLICKED] (state, value) {
+    state.filter.isSearchClicked = value
   }
 }

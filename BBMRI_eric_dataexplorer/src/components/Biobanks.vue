@@ -23,7 +23,7 @@
         let filterSet = (this.$store.state.filter.filters.diagnosis.selectedOptions.length +
                           this.$store.state.filter.filters.material_types.selectedOptions.length +
                           this.$store.state.filter.filters.quality.selectedOptions.length) > 0 |
-                          this.$store.state.filter.searchQuery.length > 0
+                          this.$store.state.filter.isSearchClicked
         console.log(filterSet)
         let filteredBiobanks = []
         let biobanks = this.$store.state.biobanks

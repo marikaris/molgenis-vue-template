@@ -8,6 +8,7 @@ const state = {
   collections: [],
   filter: {
     searchQuery: '',
+    isSearchClicked: false,
     filters: {
       countries: {
         entityTypeName: 'eu_bbmri_eric_biobanks',
