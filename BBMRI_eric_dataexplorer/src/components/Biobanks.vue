@@ -1,6 +1,6 @@
 <template>
   <div id="results">
-    <result v-for="result in results" :key="result.id" :name="result.name" :info="result" :keys="keys"></result>
+    <biobank v-for="result in results" :key="result.id" :name="result.name" :info="result" :keys="keys"></biobank>
   </div>
 </template>
 <style lang="scss">
@@ -14,10 +14,10 @@
   }
 </style>
 <script>
-  import Result from './Result'
+  import Biobank from './Biobank'
   export default {
-    name: 'results',
-    components: {Result},
+    name: 'biobanks',
+    components: {Biobank},
     computed: {
       results: function () {
         let filterSet = (this.$store.state.filter.filters.diagnosis.selectedOptions.length +

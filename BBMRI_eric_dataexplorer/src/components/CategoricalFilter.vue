@@ -1,38 +1,63 @@
 <template>
-  <div class="card" id="categorical_filter">
-    <p class="card-text">
-      <filter-option v-for="(filter, id) in filters" :key="filter.filter" :name="filter.filter" :options="filter.options" :id="id"></filter-option>
-    </p>
+  <div class="card filter_option">
+    <h5 class="card-header" @click="toggleOptions">
+      <i class="fa fa-caret-up" aria-hidden="true" v-if="showContent"></i>
+      <i class="fa fa-caret-down" aria-hidden="true" v-else></i>
+      {{name}}
+    </h5>
+    <div class="card-block" v-show="showContent">
+      <filter-checkbox v-for="(option, index) in options"
+                       :key="option.id"
+                       :id="option.id"
+                       :label="option.label"
+                       :name="option.name"
+                       :index="index"
+                       :showAll="showAllContent"
+                       :partOf="id">
+
+      </filter-checkbox>
+      <p class="text-right" v-if="options.length > 5" v-show="!showAllContent"><a href="#" @click="toggleAllOptions">
+        <small><i><i class="fa fa-caret-down" aria-hidden="true"></i> Show more</i></small>
+      </a></p>
+      <p class="text-right" v-if="options.length > 5" v-show="showAllContent"><a href="#" @click="toggleAllOptions">
+        <small><i><i class="fa fa-caret-up" aria-hidden="true"></i> Show less</i></small>
+      </a></p>
+    </div>
   </div>
 </template>
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-  #categorical_filter {
-    background-color: $gray-lightest;
-    height: 100%
+
+  .filter_option {
+    background-color: inherit;
+
   }
 </style>
 <script>
-  import FilterOption from './FilterOption'
-  import { GET_BIOBANKS, GET_COLLECTIONS, GET_COUNTRIES, GET_MATERIAL_TYPES, GET_QUALITY } from '../store/actions'
+  import FilterCheckbox from './FilterCheckbox'
 
   export default {
     name: 'categorical-filter',
+    props: ['id', 'name', 'options'],
+    components: {FilterCheckbox},
     data: function () {
       return {
-        filters: this.$store.state.filter.filters
+        showContent: false,
+        showAllContent: false,
+        selectedOptions: this.$store.state[this.id]
       }
     },
-    components: {
-      FilterOption
-    },
-    mounted () {
-      this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters.countries.selectedOptions)
-      this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filter)
-      this.$store.dispatch(GET_COUNTRIES)
-      this.$store.dispatch(GET_MATERIAL_TYPES)
-      this.$store.dispatch(GET_QUALITY)
+    methods: {
+      toggleOptions () {
+        this.showContent = !this.showContent
+        return this.showContent
+      },
+      toggleAllOptions () {
+        this.showAllContent = !this.showAllContent
+        return this.showAllContent
+      }
     }
+
   }
 </script>

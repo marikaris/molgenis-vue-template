@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-md-3" id="filter">
-      <categorical-filter></categorical-filter>
+    <div class="col-md-3" id="filters">
+      <filters></filters>
     </div>
     <div class="col-md-9">
       <div class="row">
@@ -16,19 +16,19 @@
       </div>
       <div class="row">
         <div class="col-md-12" id="results">
-          <results></results>
+          <biobanks></biobanks>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import CategoricalFilter from './CategoricalFilter'
-  import Results from './Results'
+  import Filters from './Filters'
+  import Biobanks from './Biobanks'
   import SearchBox from './SearchBox'
 
   export default {
     name: 'bbmri-dataexplorer',
-    components: {CategoricalFilter, Results, SearchBox}
+    components: {Filters, Biobanks, SearchBox}
   }
 </script>
