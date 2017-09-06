@@ -37,7 +37,7 @@
 <script>
   export default {
     name: 'collection-overview',
-    props: ['columns', 'filterKey'],
+    props: ['columns', 'filterKey', 'data'],
     data: function () {
       var sortOrders = {}
       this.columns.forEach(function (key) {
@@ -69,9 +69,6 @@
           })
         }
         return data
-      },
-      data: function get () {
-        return this.$store.state.collections.items
       }
     },
     filters: {

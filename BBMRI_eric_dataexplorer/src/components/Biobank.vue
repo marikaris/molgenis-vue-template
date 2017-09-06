@@ -12,6 +12,8 @@
         </div>
       </div>
     </div>
+    <collection-overview filterKey="" :columns="['name', 'type', 'materials']">
+    </collection-overview>
   </div>
 </template>
 <style lang="scss">
@@ -21,11 +23,17 @@
     background-color: $gray-lightest;
     margin-top: 1em;
   }
+  .biobank_card:hover{
+    cursor: pointer;
+    cursor: hand;
+  }
 </style>
 <script>
+  import CollectionOverview from './CollectionOverview'
 
   export default {
     name: 'biobank',
+    compounds: {CollectionOverview},
     props: ['name', 'info', 'keys'],
     methods: {
       redirectToBiobankView: function () {
