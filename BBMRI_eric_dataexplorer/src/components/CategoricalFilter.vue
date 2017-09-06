@@ -17,7 +17,7 @@
                        :name="option.name"
                        :index="index"
                        :showAll="showAllContent"
-                       :partOf="id">
+                       :partOf="id" :ref="id">
 
       </filter-checkbox>
       <p class="text-right" v-if="options.length > 5" v-show="!showAllContent"><a href="#" @click="toggleAllOptions">
@@ -67,19 +67,19 @@
       toggleSelect () {
         const self = this
         self.selectAll = !self.selectAll
-        const checkboxes = document.getElementsByName(self.id)
+        const checkboxes = this.$refs[this.id]
         checkboxes.forEach(function (checkbox) {
           checkbox.checked = self.selectAll
         })
         let allOptions = []
         if (self.selectAll) {
-          allOptions = this.options.map(function (option) { return option.id })
+          allOptions = self.options.map(function (option) { return option.id })
         }
-        this.$store.commit(SET_FILTER, { name: this.id, newSelectedOptions: allOptions })
-        if (this.$store.state.filter.filters[this.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
-          this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters[this.partOf].selectedOptions)
+        self.$store.commit(SET_FILTER, { name: self.id, newSelectedOptions: allOptions })
+        if (self.$store.state.filter.filters[self.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
+          self.$store.dispatch(GET_BIOBANKS, self.$store.state.filter.filters[self.id].selectedOptions)
         } else {
-          this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filter)
+          self.$store.dispatch(GET_COLLECTIONS, self.$store.state.filter)
         }
         return self.selectAll
       }
