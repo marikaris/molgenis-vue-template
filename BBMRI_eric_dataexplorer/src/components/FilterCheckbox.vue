@@ -44,7 +44,7 @@
           if (this.$store.state.filter.filters[this.partOf].entityTypeName === 'eu_bbmri_eric_biobanks') {
             this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters[this.partOf].selectedOptions)
           } else {
-            this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filter)
+            this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
           }
         }
       }

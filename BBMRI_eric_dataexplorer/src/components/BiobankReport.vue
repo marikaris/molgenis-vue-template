@@ -8,7 +8,11 @@
       <p/>
     </div>
     <collapsable-pane paneTitle="More information" :excluded="['name', 'description', 'contact']" :entity="biobank"></collapsable-pane>
-    <collection-overview collections="[]"></collection-overview>
+    <div class="card-block">
+      <h4>Collections</h4>
+      <collection-overview filterKey="" :columns= "['name', 'type', 'materials']">
+      </collection-overview>
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -20,7 +24,7 @@
   }
 </style>
 <script>
-  import { GET_BIOBANK } from '../store/actions'
+  import { GET_BIOBANK, GET_COLLECTIONS } from '../store/actions'
   import CollapsablePane from './CollapsablePane'
   import CollectionOverview from './CollectionOverview'
   export default {
@@ -38,6 +42,7 @@
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANK, this.biobankId)
+      this.$store.dispatch(GET_COLLECTIONS, {filter: {filters: []}, biobankId: this.biobankId})
     }
   }
 </script>

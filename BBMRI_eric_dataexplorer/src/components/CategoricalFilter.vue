@@ -79,7 +79,7 @@
         if (self.$store.state.filter.filters[self.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
           self.$store.dispatch(GET_BIOBANKS, self.$store.state.filter.filters[self.id].selectedOptions)
         } else {
-          self.$store.dispatch(GET_COLLECTIONS, self.$store.state.filter)
+          self.$store.dispatch(GET_COLLECTIONS, {filter: self.$store.state.filter})
         }
         return self.selectAll
       }

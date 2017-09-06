@@ -66,12 +66,13 @@ export default {
       commit(SET_ERROR, error)
     })
   },
-  [GET_COLLECTIONS] ({commit}, filter) {
+  [GET_COLLECTIONS] ({commit}, queryOptions) {
     /**
      * Pass options to the fetch like body, method, x-molgenis-token etc...
      * @type {{}}
      */
-    let filters = filter.filters
+    console.log(queryOptions)
+    let filters = queryOptions.filter.filters
     const options = {}
     let queryParts = []
     let query = ''
@@ -85,8 +86,11 @@ export default {
         }
       }
     })
-    if (filter.searchQuery) {
-      queryParts.push('*=q=' + filter.searchQuery)
+    if (queryOptions.biobankId) {
+      queryParts.push('biobank==' + queryOptions.biobankId)
+    }
+    if (queryOptions.filter.searchQuery) {
+      queryParts.push('*=q=' + queryOptions.filter.searchQuery)
     }
     if (queryParts.length) {
       query = '&q=' + queryParts.join(';')
