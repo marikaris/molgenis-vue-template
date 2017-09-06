@@ -5,7 +5,7 @@
       <i class="fa fa-caret-down" aria-hidden="true" v-else></i>
       {{paneTitle}}
     </h5>
-    <div class="card-block" v-show="showContent">
+    <div class="card-block info" v-show="showContent">
       <div v-for="attr in entity._meta.attributes">
         <attribute :value="entity[attr.name]" :attribute="attr"></attribute>
       </div>
@@ -15,7 +15,9 @@
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-
+  .info {
+    background-color: $white;
+  }
   .pane {
     background-color: inherit;
 
