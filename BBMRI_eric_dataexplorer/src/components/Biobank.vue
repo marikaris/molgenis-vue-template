@@ -1,5 +1,5 @@
 <template>
-  <div class="card biobank_card">
+  <div class="card biobank_card" @click="redirectToBiobankView">
     <div class="card-block">
       <div class="d-flex justify-content-between">
         <div>
@@ -26,6 +26,12 @@
 
   export default {
     name: 'biobank',
-    props: ['name', 'info', 'keys']
+    props: ['name', 'info', 'keys'],
+    methods: {
+      redirectToBiobankView: function () {
+        console.log(this.$router)
+        this.$router.replace('/biobank/' + this.info.id)
+      }
+    }
   }
 </script>
