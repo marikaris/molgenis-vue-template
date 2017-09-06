@@ -1,7 +1,7 @@
 <template>
   <div class="form-check filter_checkbox" v-show="index<4 | showAll">
     <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" v-model="value">
+      <input class="form-check-input" type="checkbox" v-model="value" :name="partOf">
       <div class="d-flex justify-content-between">
           <span v-if="label">{{label}}</span><span v-if="name">{{name}}</span>
       </div>

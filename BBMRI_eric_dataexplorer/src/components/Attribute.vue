@@ -32,12 +32,6 @@
         let self = this
         const label = self.attribute.refEntity.attributes.find(attr => attr.labelAttribute).name
         return label
-//        for (let index in self.attribute.refEntity.attributes) {
-//          var attr = self.attribute.refEntity.attributes[index]
-//          if (attr.labelAttribute) {
-//            return attr.name
-//          }
-//        }
       }
     }
   }

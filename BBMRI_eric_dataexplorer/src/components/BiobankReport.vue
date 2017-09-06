@@ -8,6 +8,7 @@
       <p/>
     </div>
     <collapsable-pane paneTitle="More information" :excluded="['name', 'description', 'contact']" :entity="biobank"></collapsable-pane>
+    <collection-overview collections="[]"></collection-overview>
   </div>
 </template>
 <style lang="scss">
@@ -21,9 +22,10 @@
 <script>
   import { GET_BIOBANK } from '../store/actions'
   import CollapsablePane from './CollapsablePane'
+  import CollectionOverview from './CollectionOverview'
   export default {
     name: 'biobank-report',
-    components: {CollapsablePane},
+    components: {CollapsablePane, CollectionOverview},
     data: function () {
       return {
         biobankId: this.$route.params.id

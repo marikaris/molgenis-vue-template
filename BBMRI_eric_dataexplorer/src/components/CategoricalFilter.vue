@@ -6,6 +6,10 @@
       {{name}}
     </h5>
     <div class="card-block" v-show="showContent">
+      <p class="text-right" @click="toggleSelect">
+        <small v-show="!selectAll"><i><a href="#">Select all</a></i></small>
+        <small v-show="selectAll"><i><a href="#">Deselect all</a></i></small>
+      </p>
       <filter-checkbox v-for="(option, index) in options"
                        :key="option.id"
                        :id="option.id"
@@ -36,6 +40,8 @@
 </style>
 <script>
   import FilterCheckbox from './FilterCheckbox'
+  import {SET_FILTER} from '../store/mutations'
+  import {GET_BIOBANKS, GET_COLLECTIONS} from '../store/actions'
 
   export default {
     name: 'categorical-filter',
@@ -45,7 +51,8 @@
       return {
         showContent: false,
         showAllContent: false,
-        selectedOptions: this.$store.state[this.id]
+        selectedOptions: this.$store.state[this.id],
+        selectAll: false
       }
     },
     methods: {
@@ -56,8 +63,26 @@
       toggleAllOptions () {
         this.showAllContent = !this.showAllContent
         return this.showAllContent
+      },
+      toggleSelect () {
+        const self = this
+        self.selectAll = !self.selectAll
+        const checkboxes = document.getElementsByName(self.id)
+        checkboxes.forEach(function (checkbox) {
+          checkbox.checked = self.selectAll
+        })
+        let allOptions = []
+        if (self.selectAll) {
+          allOptions = this.options.map(function (option) { return option.id })
+        }
+        this.$store.commit(SET_FILTER, { name: this.id, newSelectedOptions: allOptions })
+        if (this.$store.state.filter.filters[this.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
+          this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters[this.partOf].selectedOptions)
+        } else {
+          this.$store.dispatch(GET_COLLECTIONS, this.$store.state.filter)
+        }
+        return self.selectAll
       }
     }
-
   }
 </script>
