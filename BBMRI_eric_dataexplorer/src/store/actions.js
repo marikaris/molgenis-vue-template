@@ -103,7 +103,7 @@ export default {
   },
   [GET_BIOBANK] ({commit}, biobankId) {
     const options = {}
-    let apiUrl = '/api/v2/eu_bbmri_eric_biobanks/' + biobankId
+    let apiUrl = '/api/v2/eu_bbmri_eric_biobanks/' + biobankId + '?attrs=collections(*),*'
     get(apiUrl, options).then(response => {
       commit(SET_BIOBANK, response)
     }, error => {

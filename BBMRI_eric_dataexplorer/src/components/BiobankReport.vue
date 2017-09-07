@@ -10,7 +10,7 @@
                         :entity="biobank"></collapsable-pane>
       <div class="card-block">
         <h4>Collections</h4>
-        <collection-overview filterKey="" :columns="['name', 'type', 'materials']" :data="collections">
+        <collection-overview filterKey="" :columns="['name', 'type', 'materials']" :data="biobank.collections">
         </collection-overview>
       </div>
     </div>
@@ -26,7 +26,7 @@
   }
 </style>
 <script>
-  import { GET_BIOBANK, GET_COLLECTIONS } from '../store/actions'
+  import { GET_BIOBANK } from '../store/actions'
   import CollapsablePane from './CollapsablePane'
   import CollectionOverview from './CollectionOverview'
   import { mapGetters } from 'vuex'
@@ -40,14 +40,11 @@
       }
     },
     computed: {
-      ...mapGetters({collectionsObj: 'getCollections', biobank: 'getSelectedBiobank'}),
-      collections: function get () {
-        return this.collectionsObj.items
-      }
+      ...mapGetters({biobank: 'getSelectedBiobank'})
     },
     mounted () {
       this.$store.dispatch(GET_BIOBANK, this.biobankId)
-      this.$store.dispatch(GET_COLLECTIONS, {filter: {filters: []}, biobankId: this.biobankId})
+//      this.$store.dispatch(GET_COLLECTIONS, {filter: {filters: []}, biobankId: this.biobankId})
     }
   }
 </script>
