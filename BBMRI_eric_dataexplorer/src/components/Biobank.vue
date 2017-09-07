@@ -12,28 +12,30 @@
         </div>
       </div>
     </div>
-    <!--<collection-overview filterKey="" :columns="['name', 'type', 'materials']">-->
-    <!--</collection-overview>-->
+    <collection-overview filterKey="" :columns="['name', 'type', 'materials']" :data="info.collections">
+    </collection-overview>
   </div>
 </template>
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
-  .biobank_card{
+
+  .biobank_card {
     background-color: $gray-lightest;
     margin-top: 1em;
   }
-  .biobank_card:hover{
+
+  .biobank_card:hover {
     cursor: pointer;
     cursor: hand;
   }
 </style>
 <script>
-//  import CollectionOverview from './CollectionOverview'
-
+  import CollectionOverview from './CollectionOverview'
+  //  import { mapGetters } from 'vuex'
   export default {
     name: 'biobank',
-//    compounds: {CollectionOverview},
+    compounds: {CollectionOverview},
     props: ['name', 'info', 'keys'],
     methods: {
       redirectToBiobankView: function () {

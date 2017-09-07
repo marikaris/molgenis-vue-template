@@ -22,7 +22,7 @@ export default {
     if (selectedOptions.length > 0) {
       query = '&q=country=in=("' + selectedOptions.join('","') + '")'
     }
-    let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?num=10000' + query
+    let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100' + query
     get(apiUrl, options).then(response => {
       commit(SET_BIOBANKS, response)
     }, error => {
@@ -35,7 +35,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_countries?num=10000', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_countries?num=100', options).then(response => {
       // FIXME: get complete response and show label attribute in checkbox
       commit(SET_COUNTRIES, response.items)
     }, error => {
@@ -48,7 +48,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_material_types?num=10000', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_material_types?num=100', options).then(response => {
       commit(SET_MATERIAL_TYPES, response.items)
     }, error => {
       commit(SET_ERROR, error)
@@ -60,7 +60,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_ops_standards?num=10000', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_ops_standards?num=100', options).then(response => {
       commit(SET_QUALITY, response.items)
     }, error => {
       commit(SET_ERROR, error)
@@ -94,7 +94,7 @@ export default {
     if (queryParts.length) {
       query = '&q=' + queryParts.join(';')
     }
-    let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=10000' + query
+    let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=100' + query
     get(apiUrl, options).then(response => {
       commit(SET_COLLECTIONS, response)
     }, error => {
