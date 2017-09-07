@@ -4,7 +4,7 @@
       <div class="card-block">
         <h4>{{biobank.name}}</h4>
         <p>{{biobank.description}}</p>
-        <b>Contact: </b>{{biobank.contact.email}}
+        <p v-if="biobank.contact"><b>Contact: </b>{{biobank.contact.email}}</p>
       </div>
       <collapsable-pane paneTitle="More information" :excluded="['name', 'description', 'contact']"
                         :entity="biobank"></collapsable-pane>
@@ -29,6 +29,8 @@
   import { GET_BIOBANK, GET_COLLECTIONS } from '../store/actions'
   import CollapsablePane from './CollapsablePane'
   import CollectionOverview from './CollectionOverview'
+  import { mapGetters } from 'vuex'
+
   export default {
     name: 'biobank-report',
     components: {CollapsablePane, CollectionOverview},
@@ -38,11 +40,9 @@
       }
     },
     computed: {
-      biobank: function get () {
-        return this.$store.state.selectedBiobank
-      },
+      ...mapGetters({collectionsObj: 'getCollections', biobank: 'getSelectedBiobank'}),
       collections: function get () {
-        return this.$store.state.collections.items
+        return this.collectionsObj.items
       }
     },
     mounted () {

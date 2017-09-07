@@ -1,6 +1,7 @@
 export default {
   getCollections: state => state.collections ? state.collections : [],
   getBiobanks: state => state.biobanks ? state.biobanks : [],
+  getSelectedBiobank: state => state.selectedBiobank ? state.selectedBiobank : {},
   getFilteredBiobanks: function (state) {
     let selection = new Set()
     let filteredBiobanks = []

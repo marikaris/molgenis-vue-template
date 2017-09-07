@@ -50,6 +50,7 @@
       clear: function () {
         this.query = ''
         this.$store.commit(SET_SEARCH_CLICKED, false)
+        this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
       }
     }
   }

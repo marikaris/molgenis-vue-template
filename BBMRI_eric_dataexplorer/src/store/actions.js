@@ -71,7 +71,6 @@ export default {
      * Pass options to the fetch like body, method, x-molgenis-token etc...
      * @type {{}}
      */
-    console.log(queryOptions)
     let filters = queryOptions.filter.filters
     const options = {}
     let queryParts = []

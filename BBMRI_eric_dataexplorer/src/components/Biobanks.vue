@@ -15,8 +15,8 @@
 </style>
 <script>
   import Biobank from './Biobank'
-  import { mapGetters } from 'vuex'
   import { GET_COLLECTIONS } from '../store/actions'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'biobanks',
