@@ -11,7 +11,7 @@ export const GET_BIOBANKS_AND_COLLECTIONS = '__GET_BIOBANKS_AND_COLLECTIONS__'
 export default {
   [GET_BIOBANKS_AND_COLLECTIONS] ({commit}, query) {
     let uri = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100'
-    if (query) uri += '&q=*=q=' + query
+    if (query) uri += '&q=*=q="' + query + '"'
 
     get(uri, {}).then(response => {
       commit(SET_BIOBANKS, response)

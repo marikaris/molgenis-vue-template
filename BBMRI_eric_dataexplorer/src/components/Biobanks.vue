@@ -1,11 +1,9 @@
 <template>
-  <div id="results">
-    <biobank
-      v-for="result in results"
-      :key="result.id"
-      :name="result.name"
-      :info="result"
-      :keys="keys">
+  <div id="biobanks">
+    <biobank v-if="biobank.collections.length > 0"
+      v-for="biobank in biobanks"
+      :key="biobank.id"
+      :biobank="biobank">
     </biobank>
   </div>
 </template>
@@ -14,7 +12,7 @@
   @import "~variables";
   @import "~mixins";
 
-  #results {
+  #biobanks {
     width: 100%;
     height: 80vh;
     overflow: auto;
@@ -27,14 +25,9 @@
 
   export default {
     name: 'biobanks',
-    components: {Biobank},
     computed: {
-      ...mapGetters({results: 'getFilteredBiobanks'})
+      ...mapGetters({biobanks: 'getFilteredBiobanks'})
     },
-    data: function () {
-      return {
-        keys: ['juridical_person']
-      }
-    }
+    components: {Biobank}
   }
 </script>

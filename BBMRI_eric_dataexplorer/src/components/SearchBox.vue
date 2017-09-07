@@ -12,6 +12,7 @@
     </button>
   </div>
 </template>
+
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
@@ -30,6 +31,7 @@
     border-radius: 50px;
   }
 </style>
+
 <script>
   import { GET_BIOBANKS_AND_COLLECTIONS } from '../store/actions'
 

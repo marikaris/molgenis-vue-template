@@ -5,9 +5,6 @@ export const SET_MATERIAL_TYPES = '__SET_MATERIAL_TYPES__'
 export const SET_QUALITY = '__SET_QUALITY__'
 export const SET_FILTER = '__SET_FILTER__'
 export const SET_ERROR = '__SET_ERROR__'
-export const SET_COLLECTIONS = '__SET_COLLECTIONS__'
-export const SET_SEARCH_QUERY = '__SET_SEARCH_QUERY__'
-export const SET_SEARCH_CLICKED = '__SET_SEARCH_CLICKED__'
 
 export default {
   [SET_BIOBANKS] (state, biobanks) {
@@ -25,17 +22,8 @@ export default {
   [SET_FILTER] (state, {name, newSelectedOptions}) {
     state.filters[name].selectedOptions = newSelectedOptions
   },
-  [SET_COLLECTIONS] (state, collections) {
-    state.collections = collections
-  },
   [SET_ERROR] (state, error) {
     state.error = error
-  },
-  [SET_SEARCH_QUERY] (state, query) {
-    state.searchQuery = query
-  },
-  [SET_SEARCH_CLICKED] (state, value) {
-    state.isSearchClicked = value
   },
   [SET_BIOBANK] (state, biobank) {
     state.selectedBiobank = biobank

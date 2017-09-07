@@ -33,19 +33,18 @@ export default {
         const collections = biobank.collections
 
         const filteredCollections = collections.filter(collection => {
-          const collectionContainsMaterial = collection.materials.find(collectionMaterial => {
+          const collectionsContainingMaterial = collection.materials.find(collectionMaterial => {
             return materialTypeFilters.includes(collectionMaterial.id)
           })
 
-          const collectionContainsQuality = collection.standards.find(collectionStandard => {
+          const collectionsContainingQuality = collection.standards.find(collectionStandard => {
             return qualityFilters.includes(collectionStandard.id)
           })
 
-          return (materialTypeFilters.length > 0 && qualityFilters.length === 0 && !!collectionContainsMaterial) ||
-            (materialTypeFilters.length === 0 && qualityFilters.length > 0 && !!collectionContainsQuality) ||
-            (!!collectionContainsMaterial && !!collectionContainsQuality)
+          return (materialTypeFilters.length > 0 && qualityFilters.length === 0 && !!collectionsContainingMaterial) ||
+            (materialTypeFilters.length === 0 && qualityFilters.length > 0 && !!collectionsContainingQuality) ||
+            (!!collectionsContainingMaterial && !!collectionsContainingQuality)
         })
-
         return filteredCollections.length > 0
       })
     }
