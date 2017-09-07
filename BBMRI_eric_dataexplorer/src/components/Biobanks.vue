@@ -15,36 +15,22 @@
 </style>
 <script>
   import Biobank from './Biobank'
+  import { mapGetters } from 'vuex'
+  import { GET_COLLECTIONS } from '../store/actions'
+
   export default {
     name: 'biobanks',
     components: {Biobank},
     computed: {
-      results: function () {
-        let filterSet = (this.$store.state.filter.filters.diagnosis.selectedOptions.length +
-                          this.$store.state.filter.filters.material_types.selectedOptions.length +
-                          this.$store.state.filter.filters.quality.selectedOptions.length) > 0 |
-                          this.$store.state.filter.isSearchClicked
-        let filteredBiobanks = []
-        let biobanks = this.$store.state.biobanks.items
-        if (filterSet) {
-          let selection = new Set()
-          let collections = this.$store.state.collections.items
-          collections.map(function (collection) {
-            selection.add(collection.biobank.id)
-          })
-          filteredBiobanks = biobanks.filter(function (biobank) {
-            return selection.has(biobank.id)
-          })
-        } else {
-          filteredBiobanks = biobanks
-        }
-        return filteredBiobanks
-      }
+      ...mapGetters({results: 'getFilteredBiobanks'})
     },
     data: function () {
       return {
         keys: ['juridical_person']
       }
+    },
+    created: function () {
+      this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
     }
   }
 </script>

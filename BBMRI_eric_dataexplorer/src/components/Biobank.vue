@@ -12,8 +12,8 @@
         </div>
       </div>
     </div>
-    <collection-overview filterKey="" :columns="['name', 'type', 'materials']">
-    </collection-overview>
+    <!--<collection-overview filterKey="" :columns="['name', 'type', 'materials']">-->
+    <!--</collection-overview>-->
   </div>
 </template>
 <style lang="scss">
@@ -29,11 +29,11 @@
   }
 </style>
 <script>
-  import CollectionOverview from './CollectionOverview'
+//  import CollectionOverview from './CollectionOverview'
 
   export default {
     name: 'biobank',
-    compounds: {CollectionOverview},
+//    compounds: {CollectionOverview},
     props: ['name', 'info', 'keys'],
     methods: {
       redirectToBiobankView: function () {

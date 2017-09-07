@@ -45,7 +45,7 @@
     methods: {
       submit: function (query) {
         this.$store.commit(SET_SEARCH_CLICKED, true)
-        this.$store.dispatch(GET_COLLECTIONS, {filter: self.$store.state.filter})
+        this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
       },
       clear: function () {
         this.query = ''
