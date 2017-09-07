@@ -1,6 +1,6 @@
 <template>
   <div class="input-group" id="search_items">
-    <input type="text" class="form-control" placeholder="Search for..." v-model="query">
+    <input type="text" class="form-control" placeholder="Search for..." v-model="query" v-on:keyup.enter="submit(query)">
     <button class="btn btn-danger input-group-addon" @click="clear()">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
