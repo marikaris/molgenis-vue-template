@@ -1,25 +1,33 @@
 <template>
   <table class="table table-striped">
+
     <thead>
     <tr>
-      <th v-for="key in columns" @click="sortBy(key)" :class="{ active: sortKey == key }">
-        {{ key | capitalize }}
-        <i class="fa fa-caret-up" aria-hidden="true" v-if="sortOrders[key] > 0"></i>
+      <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortKey == column }">
+        {{ column | capitalize }}
+        <i class="fa fa-caret-up" aria-hidden="true" v-if="sortOrders[column] > 0"></i>
         <i class="fa fa-caret-down" aria-hidden="true" v-else></i>
       </th>
     </tr>
     </thead>
 
     <tbody>
-    <tr v-for="entry in filteredcollections">
-      <td v-for="key in columns">
-        <span v-if="key==='name'">{{entry[key]}}</span>
+    <tr v-for="collection in filteredCollections">
+      <td v-for="column in columns">
+        <span v-if="column === 'name'">{{collection[column]}}</span>
+
+        <span v-else-if="column === 'standards'">
+          <quality-logo v-for="quality in collection[column]" :name="quality"></quality-logo>
+          <img src="../../static/standards_logos/CEN_TS_16826_1_2015_E.png" alt="logo">
+        </span>
+
         <ul v-else>
-          <li v-for="info in entry[key]">{{info.label}}</li>
+          <li v-for="info in collection[column]">{{info.label}}</li>
         </ul>
       </td>
     </tr>
     </tbody>
+
   </table>
 </template>
 
@@ -52,7 +60,7 @@
       }
     },
     computed: {
-      filteredcollections: function () {
+      filteredCollections: function () {
         const sortKey = this.sortKey
         const filterKey = this.filterKey && this.filterKey.toLowerCase()
         const order = this.sortOrders[sortKey] || 1

@@ -10,7 +10,7 @@ export const GET_BIOBANKS_AND_COLLECTIONS = '__GET_BIOBANKS_AND_COLLECTIONS__'
 
 export default {
   [GET_BIOBANKS_AND_COLLECTIONS] ({commit}, query) {
-    let uri = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100'
+    let uri = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=10000'
     if (query) uri += '&q=*=q="' + query + '"'
 
     get(uri, {}).then(response => {
@@ -25,7 +25,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_countries?num=100', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_countries?num=10000', options).then(response => {
       // FIXME: get complete response and show label attribute in checkbox
       commit(SET_COUNTRIES, response.items)
     }, error => {
@@ -38,7 +38,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_material_types?num=100', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_material_types?num=10000', options).then(response => {
       commit(SET_MATERIAL_TYPES, response.items)
     }, error => {
       commit(SET_ERROR, error)
@@ -50,7 +50,7 @@ export default {
      * @type {{}}
      */
     const options = {}
-    get('/api/v2/eu_bbmri_eric_ops_standards?num=100', options).then(response => {
+    get('/api/v2/eu_bbmri_eric_lab_standards?num=10000', options).then(response => {
       commit(SET_QUALITY, response.items)
     }, error => {
       commit(SET_ERROR, error)

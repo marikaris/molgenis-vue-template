@@ -18,7 +18,7 @@
 
       <collection-overview
         filterKey=""
-        :columns="['name', 'type', 'materials']"
+        :columns="['name', 'type', 'materials', 'standards']"
         :collections="biobank.collections">
       </collection-overview>
     </div>
