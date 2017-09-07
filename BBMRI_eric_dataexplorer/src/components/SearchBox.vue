@@ -2,9 +2,11 @@
   <div class="input-group" id="search_items">
     <input type="text" class="form-control" placeholder="Search for..." v-model="query"
            v-on:keyup.enter="submit(query)">
+
     <button class="btn btn-danger input-group-addon" @click="clear()">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
+
     <button class="btn btn-primary input-group-addon" @click="submit(query)">
       <i class="fa fa-search" aria-hidden="true"></i>
     </button>
@@ -29,27 +31,22 @@
   }
 </style>
 <script>
-  import { SET_SEARCH_QUERY, SET_SEARCH_CLICKED } from '../store/mutations'
+  import { GET_BIOBANKS_AND_COLLECTIONS } from '../store/actions'
 
   export default {
     name: 'search-box',
-    computed: {
-      query: {
-        get: function () {
-          return this.$store.state.searchQuery
-        },
-        set: function (query) {
-          this.$store.commit(SET_SEARCH_QUERY, query)
-        }
+    data: function () {
+      return {
+        query: ''
       }
     },
     methods: {
-      submit: function (query) {
-        this.$store.commit(SET_SEARCH_CLICKED, true)
+      submit: function () {
+        this.$store.dispatch(GET_BIOBANKS_AND_COLLECTIONS, this.query)
       },
       clear: function () {
         this.query = ''
-        this.$store.commit(SET_SEARCH_CLICKED, false)
+        this.$store.dispatch(GET_BIOBANKS_AND_COLLECTIONS)
       }
     }
   }

@@ -1,12 +1,5 @@
 import { get } from '@molgenis/molgenis-api-client'
-import {
-  SET_BIOBANK,
-  SET_BIOBANKS,
-  SET_COUNTRIES,
-  SET_ERROR,
-  SET_MATERIAL_TYPES,
-  SET_QUALITY
-} from './mutations'
+import { SET_BIOBANK, SET_BIOBANKS, SET_COUNTRIES, SET_ERROR, SET_MATERIAL_TYPES, SET_QUALITY } from './mutations'
 
 export const GET_BIOBANK = '__GET_BIOBANK__'
 export const GET_COUNTRIES = '__GET_COUNTRIES__'
@@ -16,34 +9,16 @@ export const GET_QUALITY = '__GET_QUALITY__'
 export const GET_BIOBANKS_AND_COLLECTIONS = '__GET_BIOBANKS_AND_COLLECTIONS__'
 
 export default {
-  [GET_BIOBANKS_AND_COLLECTIONS] ({commit}) {
-    const uri = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100'
+  [GET_BIOBANKS_AND_COLLECTIONS] ({commit}, query) {
+    let uri = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100'
+    if (query) uri += '&q=*=q=' + query
+
     get(uri, {}).then(response => {
       commit(SET_BIOBANKS, response)
     }, error => {
       commit(SET_ERROR, error)
     })
   },
-  // /**
-  //  * Example action for retrieving all EntityTypes from the server
-  //  */
-  // [GET_BIOBANKS] ({commit}, selectedOptions) {
-  //   /**
-  //    * Pass options to the fetch like body, method, x-molgenis-token etc...
-  //    * @type {{}}
-  //    */
-  //   const options = {}
-  //   let query = ''
-  //   if (selectedOptions.length > 0) {
-  //     query = '&q=country=in=("' + selectedOptions.join('","') + '")'
-  //   }
-  //   let apiUrl = '/api/v2/eu_bbmri_eric_biobanks?attrs=collections(*),*&num=100' + query
-  //   get(apiUrl, options).then(response => {
-  //     commit(SET_BIOBANKS, response)
-  //   }, error => {
-  //     commit(SET_ERROR, error)
-  //   })
-  // },
   [GET_COUNTRIES] ({commit}) {
     /**
      * Pass options to the fetch like body, method, x-molgenis-token etc...
@@ -81,41 +56,6 @@ export default {
       commit(SET_ERROR, error)
     })
   },
-  // [GET_COLLECTIONS] ({commit}, queryOptions) {
-  //   /**
-  //    * Pass options to the fetch like body, method, x-molgenis-token etc...
-  //    * @type {{}}
-  //    */
-  //   let filters = queryOptions.filters
-  //   const options = {}
-  //   let queryParts = []
-  //   let query = ''
-  //   Object.keys(filters).map(function (key, index) {
-  //     let filter = filters[key]
-  //     if (filter.entityTypeName === 'eu_bbmri_eric_collections') {
-  //       let selectedOptions = filter.selectedOptions
-  //       let collectionsAttr = filter.attributeName
-  //       if (selectedOptions.length > 0) {
-  //         queryParts.push(collectionsAttr + '=in=("' + selectedOptions.join('","') + '")')
-  //       }
-  //     }
-  //   })
-  //   if (queryOptions.biobankId) {
-  //     queryParts.push('biobank==' + queryOptions.biobankId)
-  //   }
-  //   if (queryOptions.filter.searchQuery) {
-  //     queryParts.push('*=q=' + queryOptions.filter.searchQuery)
-  //   }
-  //   if (queryParts.length) {
-  //     query = '&q=' + queryParts.join(';')
-  //   }
-  //   let apiUrl = '/api/v2/eu_bbmri_eric_collections?num=100' + query
-  //   get(apiUrl, options).then(response => {
-  //     commit(SET_COLLECTIONS, response)
-  //   }, error => {
-  //     commit(SET_ERROR, error)
-  //   })
-  // },
   [GET_BIOBANK] ({commit}, biobankId) {
     const options = {}
     let apiUrl = '/api/v2/eu_bbmri_eric_biobanks/' + biobankId + '?attrs=collections(*),*'
