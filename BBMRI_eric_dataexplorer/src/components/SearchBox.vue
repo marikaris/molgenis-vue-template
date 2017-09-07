@@ -1,6 +1,7 @@
 <template>
   <div class="input-group" id="search_items">
-    <input type="text" class="form-control" placeholder="Search for..." v-model="query" v-on:keyup.enter="submit(query)">
+    <input type="text" class="form-control" placeholder="Search for..." v-model="query"
+           v-on:keyup.enter="submit(query)">
     <button class="btn btn-danger input-group-addon" @click="clear()">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
@@ -29,13 +30,13 @@
 </style>
 <script>
   import { SET_SEARCH_QUERY, SET_SEARCH_CLICKED } from '../store/mutations'
-  import { GET_COLLECTIONS } from '../store/actions'
+
   export default {
     name: 'search-box',
     computed: {
       query: {
         get: function () {
-          return this.$store.state.filter.searchQuery
+          return this.$store.state.searchQuery
         },
         set: function (query) {
           this.$store.commit(SET_SEARCH_QUERY, query)
@@ -45,12 +46,10 @@
     methods: {
       submit: function (query) {
         this.$store.commit(SET_SEARCH_CLICKED, true)
-        this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
       },
       clear: function () {
         this.query = ''
         this.$store.commit(SET_SEARCH_CLICKED, false)
-        this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
       }
     }
   }

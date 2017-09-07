@@ -14,16 +14,16 @@ export default {
     state.biobanks = biobanks
   },
   [SET_COUNTRIES] (state, countries) {
-    state.filter.filters.countries.options = countries
+    state.filters.countries.options = countries
   },
   [SET_MATERIAL_TYPES] (state, materialTypes) {
-    state.filter.filters.material_types.options = materialTypes
+    state.filters.material_types.options = materialTypes
   },
   [SET_QUALITY] (state, quality) {
-    state.filter.filters.quality.options = quality
+    state.filters.quality.options = quality
   },
   [SET_FILTER] (state, {name, newSelectedOptions}) {
-    state.filter.filters[name].selectedOptions = newSelectedOptions
+    state.filters[name].selectedOptions = newSelectedOptions
   },
   [SET_COLLECTIONS] (state, collections) {
     state.collections = collections
@@ -32,10 +32,10 @@ export default {
     state.error = error
   },
   [SET_SEARCH_QUERY] (state, query) {
-    state.filter.searchQuery = query
+    state.searchQuery = query
   },
   [SET_SEARCH_CLICKED] (state, value) {
-    state.filter.isSearchClicked = value
+    state.isSearchClicked = value
   },
   [SET_BIOBANK] (state, biobank) {
     state.selectedBiobank = biobank

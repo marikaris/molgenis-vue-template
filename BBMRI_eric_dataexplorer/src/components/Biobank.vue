@@ -1,5 +1,6 @@
 <template>
   <div class="card biobank_card" @click="redirectToBiobankView">
+
     <div class="card-block">
       <div class="d-flex justify-content-between">
         <div>
@@ -12,10 +13,16 @@
         </div>
       </div>
     </div>
-    <collection-overview filterKey="" :columns="['name', 'type', 'materials']" :data="info.collections">
+
+    <collection-overview
+      filterKey=""
+      :columns="['name', 'type', 'materials']"
+      :data="info.collections">
     </collection-overview>
+
   </div>
 </template>
+
 <style lang="scss">
   @import "~variables";
   @import "~mixins";
@@ -30,9 +37,10 @@
     cursor: hand;
   }
 </style>
+
 <script>
   import CollectionOverview from './CollectionOverview'
-  //  import { mapGetters } from 'vuex'
+
   export default {
     name: 'biobank',
     compounds: {CollectionOverview},

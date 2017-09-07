@@ -40,8 +40,7 @@
 </style>
 <script>
   import FilterCheckbox from './FilterCheckbox'
-  import {SET_FILTER} from '../store/mutations'
-  import {GET_BIOBANKS, GET_COLLECTIONS} from '../store/actions'
+  import { SET_FILTER } from '../store/mutations'
 
   export default {
     name: 'categorical-filter',
@@ -67,20 +66,24 @@
       toggleSelect () {
         const self = this
         self.selectAll = !self.selectAll
+
         const checkboxes = this.$refs[this.id]
         checkboxes.forEach(function (checkbox) {
           checkbox.checked = self.selectAll
         })
+
         let allOptions = []
         if (self.selectAll) {
           allOptions = self.options.map(function (option) { return option.id })
         }
-        self.$store.commit(SET_FILTER, { name: self.id, newSelectedOptions: allOptions })
-        if (self.$store.state.filter.filters[self.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
-          self.$store.dispatch(GET_BIOBANKS, self.$store.state.filter.filters[self.id].selectedOptions)
-        } else {
-          self.$store.dispatch(GET_COLLECTIONS, {filter: self.$store.state.filter})
-        }
+
+        self.$store.commit(SET_FILTER, {name: self.id, newSelectedOptions: allOptions})
+//        if (self.$store.state.filters[self.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
+//          self.$store.dispatch(GET_BIOBANKS, self.$store.state.filters[self.id].selectedOptions)
+//        } else {
+//          self.$store.dispatch(GET_COLLECTIONS, {filter: self.$store.state.filter})
+//        }
+
         return self.selectAll
       }
     }

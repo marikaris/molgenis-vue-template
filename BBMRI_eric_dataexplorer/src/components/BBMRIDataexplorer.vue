@@ -26,17 +26,21 @@
   import Filters from './Filters'
   import Biobanks from './Biobanks'
   import SearchBox from './SearchBox'
-  import { GET_BIOBANKS, GET_COUNTRIES, GET_MATERIAL_TYPES, GET_QUALITY } from '../store/actions'
+  import {
+    GET_COUNTRIES,
+    GET_MATERIAL_TYPES,
+    GET_QUALITY,
+    GET_BIOBANKS_AND_COLLECTIONS
+  } from '../store/actions'
 
   export default {
     name: 'bbmri-dataexplorer',
     components: {Filters, Biobanks, SearchBox},
     mounted () {
-      this.$store.dispatch(GET_BIOBANKS, this.$store.state.filter.filters.countries.selectedOptions)
+      this.$store.dispatch(GET_BIOBANKS_AND_COLLECTIONS)
       this.$store.dispatch(GET_COUNTRIES)
       this.$store.dispatch(GET_MATERIAL_TYPES)
       this.$store.dispatch(GET_QUALITY)
     }
-
   }
 </script>
