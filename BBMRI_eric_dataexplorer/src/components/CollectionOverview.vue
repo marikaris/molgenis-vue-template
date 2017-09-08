@@ -17,8 +17,7 @@
         <span v-if="column === 'name'">{{collection[column]}}</span>
 
         <span v-else-if="column === 'standards'">
-          <quality-logo v-for="quality in collection[column]" :name="quality"></quality-logo>
-          <img src="../../static/standards_logos/CEN_TS_16826_1_2015_E.png" alt="logo">
+          <quality-logo v-for="quality in collection[column]" :quality="quality.label"></quality-logo>
         </span>
 
         <ul v-else>
@@ -45,9 +44,12 @@
 </style>
 
 <script>
+  import QualityLogo from './QualityLogo'
+
   export default {
     name: 'collection-overview',
     props: ['columns', 'filterKey', 'collections'],
+    components: {QualityLogo},
     data: function () {
       const sortOrders = {}
       this.columns.forEach(function (key) {
