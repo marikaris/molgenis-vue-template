@@ -5,7 +5,7 @@
     <tr>
       <th></th>
       <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortKey == column }">
-        {{ column | capitalize }}
+        {{ column.replace(/_/g, " ") | capitalize }}
         <i class="fa fa-caret-up" aria-hidden="true" v-if="sortOrders[column] > 0"></i>
         <i class="fa fa-caret-down" aria-hidden="true" v-else></i>
       </th>
@@ -17,9 +17,11 @@
       <td><button @click="redirectToCollectionView(collection.id)" class="btn btn-primary btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
       <td v-for="column in columns">
         <span v-if="column === 'name'">{{collection[column]}}</span>
-
+        <span v-else-if="column === 'order_of_magnitude'">
+          {{collection[column].size}}
+        </span>
         <span v-else-if="column === 'standards'">
-          <quality-logo v-for="quality in collection[column]" :quality="quality.label"></quality-logo>
+          <quality-logo v-for="quality in collection[column]" :quality="quality.label" :key="key"></quality-logo>
         </span>
 
         <ul v-else>
