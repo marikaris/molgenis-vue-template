@@ -9,7 +9,8 @@
             </div>
             <div>
               <div v-for="key in keys">
-                <small><b>{{key}}</b>: {{biobank[key]}}</small>
+                <small v-if="typeof biobank[key] === 'object'"><b>{{capitalize(key)}}</b>: {{biobank[key].name}}</small>
+                <small v-if="typeof biobank[key] === 'string' && biobank[key].length > 0"><b>{{capitalize(key)}}</b>: {{biobank[key]}}</small>
               </div>
             </div>
           </div>
@@ -47,14 +48,15 @@
     props: ['biobank'],
     data: function () {
       return {
-        keys: ['juridical_person']
+        keys: ['country', 'acronym']
       }
     },
     methods: {
       redirectToBiobankView: function () {
         console.log(this.$router)
         this.$router.replace('/biobank/' + this.biobank.id)
-      }
+      },
+      capitalize: ([first, ...rest]) => first.toUpperCase() + rest.join('').toLowerCase()
     },
     components: {CollectionOverview}
   }

@@ -17,7 +17,7 @@
 
       <div class="card-block">
         <h4>Collections</h4>
-        <collection-overview filterKey="" :columns="['name', 'type', 'materials']" :data="biobank.collections">
+        <collection-overview filterKey="" :columns="['name', 'type', 'materials', 'order_of_magnitude', 'standards']" :data="biobank.collections">
         </collection-overview>
       </div>
     </div>

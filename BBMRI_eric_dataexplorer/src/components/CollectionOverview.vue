@@ -5,7 +5,7 @@
     <tr>
       <th></th>
       <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortKey == column }">
-        {{ column.replace(/_/g, " ") | capitalize }}
+        {{ column | styleHeader }}
         <i class="fa fa-caret-up" aria-hidden="true" v-if="sortOrders[column] > 0"></i>
         <i class="fa fa-caret-down" aria-hidden="true" v-else></i>
       </th>
@@ -111,9 +111,7 @@
       }
     },
     filters: {
-      capitalize: function (str) {
-        return str.charAt(0).toUpperCase() + str.slice(1)
-      }
+      styleHeader: ([first, ...rest]) => first.toUpperCase() + rest.join('').toLowerCase().replace(/_/g, ' ')
     },
     methods: {
       sortBy: function (key) {
