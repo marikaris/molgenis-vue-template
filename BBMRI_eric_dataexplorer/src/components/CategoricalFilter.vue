@@ -48,7 +48,7 @@
     components: {FilterCheckbox},
     data: function () {
       return {
-        showContent: false,
+        showContent: true,
         showAllContent: false,
         selectedOptions: this.$store.state[this.id],
         selectAll: false
@@ -78,11 +78,6 @@
         }
 
         self.$store.commit(SET_FILTER, {name: self.id, newSelectedOptions: allOptions})
-//        if (self.$store.state.filters[self.id].entityTypeName === 'eu_bbmri_eric_biobanks') {
-//          self.$store.dispatch(GET_BIOBANKS, self.$store.state.filters[self.id].selectedOptions)
-//        } else {
-//          self.$store.dispatch(GET_COLLECTIONS, {filter: self.$store.state.filter})
-//        }
 
         return self.selectAll
       }

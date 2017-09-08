@@ -49,12 +49,6 @@
           }
 
           this.$store.commit(SET_FILTER, {name: this.partOf, newSelectedOptions: filters})
-
-//          if (this.$store.state.filters[this.partOf].entityTypeName === 'eu_bbmri_eric_biobanks') {
-//            this.$store.dispatch(GET_BIOBANKS, this.$store.state.filters[this.partOf].selectedOptions)
-//          } else {
-//            this.$store.dispatch(GET_COLLECTIONS, {filter: this.$store.state.filter})
-//          }
         }
       }
     }
