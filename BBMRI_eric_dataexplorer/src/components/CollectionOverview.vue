@@ -3,6 +3,7 @@
 
     <thead>
     <tr>
+      <th></th>
       <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortKey == column }">
         {{ column | capitalize }}
         <i class="fa fa-caret-up" aria-hidden="true" v-if="sortOrders[column] > 0"></i>
@@ -13,6 +14,7 @@
 
     <tbody>
     <tr v-for="collection in filteredCollections">
+      <td><button @click="redirectToCollectionView(collection.id)" class="btn btn-primary btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
       <td v-for="column in columns">
         <span v-if="column === 'name'">{{collection[column]}}</span>
 
@@ -115,6 +117,9 @@
       sortBy: function (key) {
         this.sortKey = key
         this.sortOrders[key] = this.sortOrders[key] * -1
+      },
+      redirectToCollectionView: function (collectionId) {
+        this.$router.replace('/menu/main/dataexplorer/details/eu_bbmri_eric_collections/' + collectionId)
       }
     }
   }
